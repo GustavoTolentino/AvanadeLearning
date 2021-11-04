@@ -72,21 +72,38 @@ label {
 }
 label::after {
 	font-family: FontAwesome;
-	float: left;
-	margin-left: -1.5em;
+	/* float: left; */
+	/* margin-left: -1.5em; */
 	content: "\f007";
 	color: #ffffff;
 
-	left: 15px;
-	position: absolute;
-	top: 21px;
-	bottom: 0;
-	margin: auto;
+	/* left: 15px; */
+	/* position: absolute; */
+	/* top: 21px; */
+	/* bottom: 0; */
+	/* margin: auto; */
 }
 label:nth-child(3)::after {
 	content: "\f13e";
 }
 
-.fia input:focus{
-    border: outset 2px red;
+/* .fia input:focus{
+    border: solid 2px red;
+} */
+.input {
+    outline: none;
+    border: none;
+    width: 350px;
+    height: 50px;
+    border: red solid 2px;
+
+
+}
+
+.fid i{
+    font-family: FontAwesome;
+    content: "\f007"; 
+}
+.fid:focus-within {
+    border: solid 2px green;
 }

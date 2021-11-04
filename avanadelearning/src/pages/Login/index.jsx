@@ -54,6 +54,16 @@ export function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               /></label>
+
+              <div className="fid">
+                <label></label>
+                <input type="password"
+                placeholder="Senha"
+                className="input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}/>
+              </div>
+              
               <a className="fmpl">Esqueci minha senha</a>
               <Button type="submit">Entrar</Button>
               <h4 className="nhal">Não tem conta?<a href="#" className="llo">Registre-se</a></h4>
