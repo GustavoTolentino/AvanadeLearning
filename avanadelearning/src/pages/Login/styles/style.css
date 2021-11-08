@@ -36,28 +36,14 @@
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
-.fia input{
-    width: 350px;
-    height: 50px;
-    background-color: #111111;
-    border-radius: 7px;
-    border: solid 1px #000000;
-    color: #ffffff;
-    outline: none;
-    padding: 0px 1em 0px 2.65em;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-.fia input::after{
-    border: outset 2px blue;
-}
-.fia:nth-child(3)::after {
-	content: "\emailIcon.svg";
-}
+
 .fmpl{ 
     color: #FB5700;
     padding-top: 5px;
     padding-bottom: 50px;
+}
+.fmlp:hover{
+    color: #111111;
 }
 .texttes {
     font-size: 54px;

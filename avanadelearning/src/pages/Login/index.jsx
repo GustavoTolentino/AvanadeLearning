@@ -4,6 +4,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { api } from '../../services/api';
 import axios from 'axios';
+import { Input } from '../../components/Input';
+import { FaBeer } from 'react-icons/fa';
+import { FiMail } from 'react-icons/fi';
+import { MdOutlineLock } from 'react-icons/md';
+// import {  } from '';
 
 export function Login() {
   const history = useHistory();
@@ -42,28 +47,9 @@ export function Login() {
           <section className="sfa">
             <form onSubmit={(e) => handleSignIn(e)} className="fia">
               <h3>Entre em sua conta</h3>
-              <label><input
-                type="email"
-                placeholder="E-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              /></label>
-              <label><input
-                type="password"
-                placeholder="Senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              /></label>
+              <Input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} icon={<FiMail />} />
+              <Input type="email" placeholder="Senha" value={password} onChange={(e) => setEmail(e.target.value)} icon={<MdOutlineLock/>} />
 
-              <div className="fid">
-                <label></label>
-                <input type="password"
-                placeholder="Senha"
-                className="input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}/>
-              </div>
-              
               <a className="fmpl">Esqueci minha senha</a>
               <Button type="submit">Entrar</Button>
               <h4 className="nhal">Não tem conta?<a href="#" className="llo">Registre-se</a></h4>
