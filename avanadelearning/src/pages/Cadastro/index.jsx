@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './styles/style.css';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
+import { FiMail } from 'react-icons/fi';
 import { useHistory } from 'react-router';
+import { api } from '../../services/api';
 
-export function CreateAd() {
+export function Cadastro() {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -17,23 +17,28 @@ export function CreateAd() {
     e.preventDefault();
     const token = localStorage.getItem('userToken');
 
-    console.log(title, price, imgLink, description);
+    console.log(email, name, password, confirmPassword);
 
-    const { data, status } = await api.post(
-      'Anuncio',
-      {
-        idUsuario: userInfo.jti,
-        nome: title,
-      },
-      {
-        headers: {
-          Authorization: 'Bearer ' + token,
-        },
-      }
-    );
+    if (password == confirmPassword)
+    {
+        const { data, status } = await api.post(
+          'Usuario',
+          {
+            idUsuario: userInfo.jti,
+            Email: email,
+            Nome: name,
+            Senha: password,
+          },
+          {
+            headers: {
+              Authorization: 'Bearer ' + token,
+            },
+          }
+        );
 
-    history.push('/login');
-  };
+        history.push('/login');
+      };
+    }
 
   return (
     <div>
@@ -43,12 +48,10 @@ export function CreateAd() {
                     <form>
                         <h1>Crie sua conta</h1>
                         <div>
-                        <Input type="email" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} icon={<MdOutlineLock/>} />
-
-                            <Input type="email" placeholder="Seu E-mail" value={email} onChange={(e) => setEmail(e.target.value)} icon={}/>
-                            <Input type="text" placeholder="Seu Nome"/>
-                            <Input type="password" placeholder="Sua Senha" value={password} onChange={(e) => setPassword(e.target.value)} icon={}/>
-                            <Input type="password" placeholder="Confirme sua senha" value={confirmPassword} onChange={(e.target.value)} icon={}/>
+                            <Input type="email" placeholder="Seu E-mail" value={email} onChange={(e) => setEmail(e.target.value)} icon={<FiMail/>}/>
+                            <Input type="text" placeholder="Seu Nome" value={name} onChange={(e) => setName(e.target.value)} icon={<FiMail/> }/>
+                            <Input type="password" placeholder="Sua Senha" value={password} onChange={(e) => setPassword(e.target.value)} icon={<FiMail/>}/>
+                            <Input type="password" placeholder="Confirme sua senha" value={confirmPassword} onChange={(e.target.value)} icon={<FiMail/>}/>
                             <p>Ao se registrar, você aceita nossos <a>termos de uso</a> e a nossa <a>política de privacidade</a>.</p>
 
                             <Button>Cadastrar</Button>
