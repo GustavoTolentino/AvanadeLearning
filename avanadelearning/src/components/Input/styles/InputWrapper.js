@@ -9,6 +9,8 @@ export const InputWrapper = styled.div`
   border-radius: 7px;
   padding: 0 24px;
   font-size: 24px;
+  margin-bottom: 24px;
+  width: 100%;
 
   input {
     border: none;

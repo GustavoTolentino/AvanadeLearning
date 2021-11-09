@@ -8,7 +8,7 @@ import { Input } from '../../components/Input';
 import { FaBeer } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import { MdOutlineLock } from 'react-icons/md';
-// import {  } from '';
+import  Logo  from '../../../src/AvanadeLogo.svg';
 
 export function Login() {
   const history = useHistory();
@@ -36,7 +36,9 @@ export function Login() {
       <div className="sca">
         <div className="bca">
           <div>
-            {/* <img src=""/> */}
+
+            <img src={Logo}  style={{width: "128px"}}/>
+
             <h2>Avanade Learning</h2>
           </div>
           <div>
@@ -48,7 +50,7 @@ export function Login() {
             <form onSubmit={(e) => handleSignIn(e)} className="fia">
               <h3>Entre em sua conta</h3>
               <Input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} icon={<FiMail />} />
-              <Input type="email" placeholder="Senha" value={password} onChange={(e) => setEmail(e.target.value)} icon={<MdOutlineLock/>} />
+              <Input type="email" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} icon={<MdOutlineLock/>} />
 
               <a className="fmpl">Esqueci minha senha</a>
               <Button type="submit">Entrar</Button>
