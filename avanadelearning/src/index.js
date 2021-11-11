@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 export const routing = (
   <Router>
     <Switch>
-      <Route path="*" component={Login} />
-      <Route path="/cadastro" component={Cadastro} />
+      {/* <Route path="/" component={Login} /> */}
+      <Route path="*" component={Cadastro} />
     </Switch>
   </Router>
 );

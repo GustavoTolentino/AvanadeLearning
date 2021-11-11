@@ -27,7 +27,7 @@
 }
 .fia {
     display: flex;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     justify-content: flex-start;
     flex-direction: column;
     width: 84%;

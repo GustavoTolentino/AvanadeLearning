@@ -18,6 +18,9 @@ export function Login() {
   const handleSignIn = async (e) => {
     e.preventDefault();
 
+    setEmail("a@gmail.com");
+    setPassword("12345678");
+
     const { data, status } = await api.post('/login', {
       email: email,
       senha: password,
@@ -25,7 +28,7 @@ export function Login() {
 
     if (status === 200) {
       localStorage.setItem('userToken', data.token);
-      history.push('/products');
+      history.push('/cadastro');
     }
   };
 

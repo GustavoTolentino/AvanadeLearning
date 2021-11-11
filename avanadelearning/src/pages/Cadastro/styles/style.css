@@ -1,0 +1,38 @@
+.sectionAreaAround {
+    display: flex;
+    /* justify-content: space-between;
+    gap: 60px; */
+    height: 100vh;
+    background-color:  #121214;
+}
+.sectionFormArea {
+    background-color:  #121214;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.sectionWithContent {
+    background-color:  #121214;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start ;
+    flex-direction: column;
+    color: #ffffff;
+}
+.formFromSignIn {
+    background-color: #202024;
+    color: #ffffff;
+    padding: 65px;
+    width: 60%;
+}
+.formFromSignIn h1{
+    padding-top: 0  ;
+}
+.gambi {
+    color: #FB5700;
+}
+.sectionWithContent h1{
+    color: #FB5700;
+    font-size: 64px;
+}

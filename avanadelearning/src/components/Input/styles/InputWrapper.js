@@ -10,7 +10,7 @@ export const InputWrapper = styled.div`
   padding: 0 24px;
   font-size: 24px;
   margin-bottom: 24px;
-  width: 100%;
+  /* width: 100%; */
 
   input {
     border: none;
