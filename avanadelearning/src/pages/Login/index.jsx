@@ -18,17 +18,18 @@ export function Login() {
   const handleSignIn = async (e) => {
     e.preventDefault();
 
-    setEmail("a@gmail.com");
-    setPassword("12345678");
-
-    const { data, status } = await api.post('/login', {
-      email: email,
-      senha: password,
+    console.log("entrou no método");
+    const { data, status } = await api.post('/Login', {
+      Email: email,
+      Senha: password,
     });
 
     if (status === 200) {
       localStorage.setItem('userToken', data.token);
-      history.push('/cadastro');
+      console.log("resutlado da API foi 200");
+
+      console.log(data)
+      // history.push('/cadastro');
     }
   };
 
@@ -52,12 +53,23 @@ export function Login() {
           <section className="sfa">
             <form onSubmit={(e) => handleSignIn(e)} className="fia">
               <h3>Entre em sua conta</h3>
-              <Input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} icon={<FiMail />} />
-              <Input type="email" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} icon={<MdOutlineLock/>} />
 
-              <a className="fmpl">Esqueci minha senha</a>
+              {/* <Input 
+              type="email" 
+              placeholder="E-mail" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              icon={<FiMail />} /> */}
+
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+
+
+              {/* // <Input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} icon={<MdOutlineLock/>} /> */}
+
+              {/* // <a className="fmpl">Esqueci minha senha</a> */}
               <Button type="submit">Entrar</Button>
-              <h4 className="nhal">Não tem conta?<a href="#" className="llo">Registre-se</a></h4>
+              {/* // <h4 className="nhal">Não tem conta?<a href="#" className="llo">Registre-se</a></h4> */}
             </form>
           </section>
         </div>

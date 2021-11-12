@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width:80%;
 }
 .sectionWithContent {
     background-color:  #121214;
@@ -24,15 +24,22 @@
     background-color: #202024;
     color: #ffffff;
     padding: 65px;
-    width: 60%;
+    padding-top: 5px ;
+    width: 45%;
 }
 .formFromSignIn h1{
-    padding-top: 0  ;
+    padding-top: 0;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
 }
 .gambi {
     color: #FB5700;
 }
 .sectionWithContent h1{
     color: #FB5700;
-    font-size: 64px;
+    font-size: 60px;
+}
+.logoArea{
+    display: flex;
 }

@@ -7,6 +7,7 @@ import { MdOutlineLock } from 'react-icons/md';
 import { AiOutlineUser } from 'react-icons/ai'
 import { useHistory } from "react-router";
 import { api } from "../../services/api";
+import Logo from "../../AvanadeLogo.svg";
 
 export function Cadastro() {
   const history = useHistory();
@@ -57,7 +58,7 @@ export function Cadastro() {
       <div className="contentArea">
         <div className="sectionAreaAround">
           <section className="sectionFormArea">
-            <form className="formFromSignIn">
+            <form onSubmit={(e) => createAccount(e)} className="formFromSignIn">
               <h1>Crie sua conta</h1>
               <div >
                 <Input
@@ -93,12 +94,15 @@ export function Cadastro() {
                   nossa <a className="gambi">política de privacidade</a>.
                 </p>
 
-                <Button>Cadastrar</Button>
+                <Button type="submit">Cadastrar</Button>
               </div>
             </form>
           </section>
           <section className="sectionWithContent">
-            <h1>Avanade Learning</h1>
+            <div className="logoArea">
+            <img src={Logo}/>
+            <h1>Avanade Learning</h1>              
+            </div>
             <h2>Mais de 50 mil Avanade students já estão conectados.</h2>
             <h3>
               Junte-se a milhares de guerreiros e guerreiras e venha fazer parte
