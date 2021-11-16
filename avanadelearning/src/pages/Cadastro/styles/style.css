@@ -36,10 +36,20 @@
 .gambi {
     color: #FB5700;
 }
+.gambi:hover {
+    color: #CD4700;
+}
 .sectionWithContent h1{
     color: #FB5700;
     font-size: 60px;
 }
 .logoArea{
     display: flex;
+}
+.sectionWithContent a{
+    color: #FB5700;
+    text-decoration: none;
+}
+.sectionWithContent a:hover{
+    color: #CD4700;
 }

@@ -3,11 +3,13 @@ import "./styles/style.css";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { FiMail } from "react-icons/fi";
+import { FaArrowLeft } from "react-icons/fa";
 import { MdOutlineLock } from 'react-icons/md';
 import { AiOutlineUser } from 'react-icons/ai'
 import { useHistory } from "react-router";
 import { api } from "../../services/api";
 import Logo from "../../AvanadeLogo.svg";
+import logoRecortada from '../Login/logoPedro.svg';
 
 export function Cadastro() {
   const history = useHistory();
@@ -56,6 +58,10 @@ export function Cadastro() {
     }
   };
 
+  const redirectLogin = async (e) => {
+    history.push("/login");
+  }
+
   return (
     <div>
       <div className="contentArea">
@@ -103,7 +109,7 @@ export function Cadastro() {
           </section>
           <section className="sectionWithContent">
             <div className="logoArea">
-            <img src={Logo}/>
+            <img src={logoRecortada}/>
             <h1>Avanade Learning</h1>              
             </div>
             <h2>Mais de 50 mil Avanade students já estão conectados.</h2>
@@ -111,7 +117,7 @@ export function Cadastro() {
               Junte-se a milhares de guerreiros e guerreiras e venha fazer parte
               da melhor plataforma de cursos livres
             </h3>
-            <a>Voltar para Login</a>
+            <a onClick={redirectLogin}><i>{<FaArrowLeft/>}</i> Voltar para Login</a>
           </section>
         </div>
       </div>

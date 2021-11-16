@@ -9,6 +9,7 @@ import { FaBeer } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import { MdOutlineLock } from 'react-icons/md';
 import  Logo  from '../../../src/AvanadeLogo.svg';
+import logoRecortada from '../Login/logoPedro.svg';
 
 export function Login() {
   const history = useHistory();
@@ -33,15 +34,17 @@ export function Login() {
     }
   };
 
+  const redirectRegister = async (e) => {
+    history.push('/cadastro')
+  }
+
   return (
     <div>
       <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
       <div className="sca">
         <div className="bca">
           <div className="logoLoginArea">
-
-            <img src={Logo}  style={{width: "128px"}}/>
-
+            <img src={logoRecortada} style={{width: "128px"}}/>
             <h2>Avanade Learning</h2>
           </div>
           <div>
@@ -69,7 +72,7 @@ export function Login() {
 
               <a className="fmpl">Esqueci minha senha</a>
               <Button type="submit">Entrar</Button>
-              <h4 className="nhal">Não tem conta? <a href="#" className="llo">Registre-se</a></h4>
+              <h4 className="nhal">Não tem conta? <a onClick={redirectRegister} className="llo">Registre-se</a></h4>
             </form>
           </section>
         </div>

@@ -41,7 +41,7 @@
 .fmpl{ 
     color: #FB5700;
     padding-top: 5px;
-    padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 .fmlp:hover{
     color: #111111;
@@ -107,4 +107,7 @@ label:nth-child(3)::after {
     color: #FB5700;
     font-size: 48px;
     font-weight: bold;
+}
+.logoLoginArea {
+    display: flex;
 }
