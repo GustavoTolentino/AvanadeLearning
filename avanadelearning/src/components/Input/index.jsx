@@ -10,6 +10,7 @@ export function Input({ type, placeholder, value, method, icon, ...props }) {
         placeholder={placeholder}
         value={value}
         onChange={method}
+        {...props}
       />
     </InputWrapper>
   );

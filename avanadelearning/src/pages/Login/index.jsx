@@ -29,17 +29,16 @@ export function Login() {
       console.log("resutlado da API foi 200");
 
       console.log(data)
-      // history.push('/cadastro');
+      history.push('/curso');
     }
   };
 
   return (
-    
     <div>
       <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
       <div className="sca">
         <div className="bca">
-          <div>
+          <div className="logoLoginArea">
 
             <img src={Logo}  style={{width: "128px"}}/>
 
@@ -54,22 +53,23 @@ export function Login() {
             <form onSubmit={(e) => handleSignIn(e)} className="fia">
               <h3>Entre em sua conta</h3>
 
-              {/* <Input 
+              <Input 
               type="email" 
               placeholder="E-mail" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
-              icon={<FiMail />} /> */}
+              icon={<FiMail />} />
 
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+              <Input 
+              type="password" 
+              placeholder="Senha"
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              icon={<MdOutlineLock/>} />
 
-
-              {/* // <Input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} icon={<MdOutlineLock/>} /> */}
-
-              {/* // <a className="fmpl">Esqueci minha senha</a> */}
+              <a className="fmpl">Esqueci minha senha</a>
               <Button type="submit">Entrar</Button>
-              {/* // <h4 className="nhal">Não tem conta?<a href="#" className="llo">Registre-se</a></h4> */}
+              <h4 className="nhal">Não tem conta? <a href="#" className="llo">Registre-se</a></h4>
             </form>
           </section>
         </div>

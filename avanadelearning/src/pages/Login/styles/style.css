@@ -86,11 +86,25 @@ label:nth-child(3)::after {
 
 
 }
-
 .fid i{
     font-family: FontAwesome;
     content: "\f007"; 
 }
 .fid:focus-within {
     border: solid 2px green;
+}
+.llo {
+    text-decoration: none;
+    color: #FB5700;
+}
+.llo:hover {
+    color: #CD4700;
+}
+.fmpl:hover {
+    color: #CD4700;
+}
+.logoLoginArea h2{
+    color: #FB5700;
+    font-size: 48px;
+    font-weight: bold;
 }

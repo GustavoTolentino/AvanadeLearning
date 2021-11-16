@@ -11,11 +11,12 @@ import Logo from "../../AvanadeLogo.svg";
 
 export function Cadastro() {
   const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  // const userInfo = localStorage.getItem('userToken') !== null && parseJwt();
 
   const createAccount = async (e) => {
     e.preventDefault();
@@ -24,9 +25,11 @@ export function Cadastro() {
     console.log(email, name, password, confirmPassword);
 
     if (password == confirmPassword) {
+      console.log("A senha de confirmação era igual a senha passada.");
       try {
+        console.log("Entrou no Try ao invés do Catch");
         const { data, status } = await api.post(
-          "Usuario",
+          "usuarios",
           {
             // idUsuario: userInfo.jti,
             Email: email,
@@ -39,8 +42,8 @@ export function Cadastro() {
             },
           }
         );
-
-        if(status === 200)
+          console.log("A aplicação passou pela requisição da API");
+        if(status === 201)
           history.push("/login");
 
       } catch (error) {

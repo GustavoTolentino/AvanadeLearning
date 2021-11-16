@@ -18,6 +18,7 @@ export const InputWrapper = styled.div`
     color: #ffffff;
     background-color: transparent;
     padding: 18px 0;
+    width: 100%;
   }
 
   &:focus-within {
