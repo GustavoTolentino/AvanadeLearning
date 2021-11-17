@@ -30,6 +30,10 @@ export function Home(){
         history.push('/Cadastro')
     }
 
+    const redirectCurso = async (e) => {
+        history.push('/curso')
+    }
+
     return(
         <div>
             <div className="sectionKey">
@@ -102,7 +106,7 @@ export function Home(){
                                     <p>
                                         Faça cursos, ganhe conquistas para obter <br/> pontos e se destaque dos outros <br/> estudantes.
                                     </p>
-                                    <Button type="submit" onClick={redirectRegister} border>Começar a competir!</Button>
+                                    <Button type="submit" onClick={redirectCurso} border>Começar a competir!</Button>
                                 </div>
 
                             </div>
