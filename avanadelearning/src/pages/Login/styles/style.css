@@ -23,7 +23,9 @@
     width: 480px;
     /* height: 750px; */
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: 6px;
+    padding-bottom: 40px;
+    padding-top: 40px;
 }
 .fia {
     display: flex;
@@ -36,12 +38,13 @@
     font-size: 28px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .fmpl{ 
     color: #FB5700;
-    padding-top: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    margin-top: -10px;
 }
 .fmlp:hover{
     color: #111111;
@@ -50,6 +53,7 @@
     font-size: 54px;
 }
 .nhal {
+    margin-top: 20px;
     font-size: 18px;
     color: #A8A8B3;
     font-weight: normal;

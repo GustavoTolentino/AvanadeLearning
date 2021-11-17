@@ -66,8 +66,8 @@ export function Cadastro() {
     <div>
       <div className="contentArea">
         <div className="sectionAreaAround">
-          <section className="sectionFormArea">
-            <form onSubmit={(e) => createAccount(e)} className="formFromSignIn">
+
+        <form onSubmit={(e) => createAccount(e)} className="formFromSignIn">
               <h1>Crie sua conta</h1>
               <div >
                 <Input
@@ -98,7 +98,7 @@ export function Cadastro() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   icon={<MdOutlineLock />}
                 />
-                <p>
+                <p className="termText">
                   Ao se registrar, você aceita nossos <a className="gambi">termos de uso</a> e a
                   nossa <a className="gambi">política de privacidade</a>.
                 </p>
@@ -106,19 +106,22 @@ export function Cadastro() {
                 <Button type="submit">Cadastrar</Button>
               </div>
             </form>
-          </section>
-          <section className="sectionWithContent">
+            <div className="sectionWithContent">
             <div className="logoArea">
             <img src={logoRecortada}/>
             <h1>Avanade Learning</h1>              
             </div>
-            <h2>Mais de 50 mil Avanade students já estão conectados.</h2>
-            <h3>
-              Junte-se a milhares de guerreiros e guerreiras e venha fazer parte
-              da melhor plataforma de cursos livres
-            </h3>
-            <a onClick={redirectLogin}><i>{<FaArrowLeft/>}</i> Voltar para Login</a>
-          </section>
+            <div className="textAreaRegister">
+              <h2>Mais de 50 mil Avanade students já estão conectados.</h2>
+              <h3>
+                Junte-se a milhares de guerreiros e guerreiras e venha fazer parte
+                da melhor plataforma de cursos livres
+              </h3>
+            </div>
+            <div className="returnLoginArea">
+              <a onClick={redirectLogin} className="linkRedirectLogin"><i>{<FaArrowLeft/>}</i>Voltar para Login</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

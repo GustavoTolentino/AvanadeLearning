@@ -1,7 +1,8 @@
 .sectionAreaAround {
     display: flex;
-    /* justify-content: space-between;
-    gap: 60px; */
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
     height: 100vh;
     background-color:  #121214;
 }
@@ -24,14 +25,17 @@
     background-color: #202024;
     color: #ffffff;
     padding: 65px;
-    padding-top: 5px ;
-    width: 45%;
+    padding-top: 30px ;
+    padding-bottom: 50px;
+    width: 23%;
+    border-radius: 8px;
 }
 .formFromSignIn h1{
     padding-top: 0;
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
-    font-size: 36px;
+    font-size: 28px;
+    margin: 24px 0;
 }
 .gambi {
     color: #FB5700;
@@ -45,6 +49,8 @@
 }
 .logoArea{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .sectionWithContent a{
     color: #FB5700;
@@ -52,4 +58,32 @@
 }
 .sectionWithContent a:hover{
     color: #CD4700;
+}
+.textAreaRegister {
+    max-width: 400px;
+}
+.textAreaRegister h2{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 36px;
+}
+.textAreaRegister h3{
+    padding-bottom: 30px;
+}
+.termText {
+    text-align: center;
+}
+.logoArea img{
+    width: 80px;
+}
+.logoArea h1{
+    font-size: 28px;
+}
+.linkRedirectLogin i{
+    margin-right: 10px;
+}
+.returnLoginArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
