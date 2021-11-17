@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 .content{
-    width: 80%;
+    width: 90%;
     height: 100%;
     max-width: 75em;
     margin: auto;
     /* background-color: #202024; */
 
 }
+
+
 
 .flex-center-bt{
     display: flex;
@@ -16,15 +18,15 @@
 
 }
 
-.AreaT{
+.areaT{
+    /* width: 2000px; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 250px;
     background-color: #202024;
 }
 
-.titleA{
-    /* width: 1889px; */
-    height: 200px;
-   
-}
 
 .titleA{
     width: 1020px;
@@ -32,12 +34,16 @@
     align-items: center;
     justify-content: space-around;
 }
+
 .titleA h3{
+    max-width: 10em;
     color: #ffff;
     padding-left: 210px;
 }
 
+
 .search{
+    color:#ffff;
     width: 178px;
     height: 20px;
     border-radius: 5px;
@@ -47,11 +53,32 @@
 
 /* Area dos cursos */
 .areaKey{
-    height: 250px;
+    height: 400px;
     background-color: #202024;
+    /* background-color: aqua; */
 }
 
-.tArea{
+.tArea h3{
+    padding-left: 1em;
+    color: #ffff;
+}
+
+.card{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    margin-top: 1.5em;
+}
+
+.card2{
+    width: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1.5em;
+}
+
+/* .tArea{
     padding-inline-end: 20em;
     display: flex;
     align-items: flex-start;
@@ -59,14 +86,10 @@
   
 }
 
-.tArea h3{
-    padding-bottom: 0.5em;
-    color: #ffff;
-    
-}
+
 
 /* cards */
-.cards{
+/* .cards{
     
     box-shadow: 4px 4px 4px #121214;
     width: 250px;
@@ -92,4 +115,4 @@
     align-items: center;
     justify-content: space-around;
 }
-
+  */

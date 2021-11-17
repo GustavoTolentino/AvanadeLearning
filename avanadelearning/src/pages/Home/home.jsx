@@ -19,6 +19,17 @@ import '../../assets/css/home.css';
 
 
 export function Home(){
+    const history = useHistory();
+
+    const redirectLogin = async (e) => {
+        history.push('/Login')
+    
+    }
+
+    const redirectRegister = async (e) => {
+        history.push('/Cadastro')
+    }
+
     return(
         <div>
             <div className="sectionKey">
@@ -30,7 +41,8 @@ export function Home(){
                         <div className="textBanner">
                             <h2>O melhor site & app <br/> para aprender na internet! </h2>
                             <hr></hr>
-                            <Button border>QUERO COMEÇAR!</Button>
+                            <Button type="submit"onClick={redirectLogin}
+                             border>QUERO COMEÇAR! </Button >
                         </div>
                         <div className="picture">
                             <img src={img2} alt="banner da primeira seção" />
@@ -90,7 +102,7 @@ export function Home(){
                                     <p>
                                         Faça cursos, ganhe conquistas para obter <br/> pontos e se destaque dos outros <br/> estudantes.
                                     </p>
-                                    <Button border>Começar a competir!</Button>
+                                    <Button type="submit" onClick={redirectRegister} border>Começar a competir!</Button>
                                 </div>
 
                             </div>
