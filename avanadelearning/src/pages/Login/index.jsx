@@ -27,7 +27,7 @@ export function Login() {
 
     if (status === 200) {
       localStorage.setItem('userToken', data.token);
-      console.log("resutlado da API foi 200");
+      console.log("resultado da API foi 200");
 
       console.log(data)
       history.push('/curso');

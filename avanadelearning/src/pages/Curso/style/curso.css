@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 .content{
-    width: 80%;
+    width: 90%;
     height: 100%;
     max-width: 75em;
     margin: auto;
@@ -16,15 +16,15 @@
 
 }
 
-.AreaT{
+.areaT{
+    /* width: 2000px; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 250px;
     background-color: #202024;
 }
 
-.titleA{
-    /* width: 1889px; */
-    height: 200px;
-   
-}
 
 .titleA{
     width: 1020px;
@@ -32,6 +32,7 @@
     align-items: center;
     justify-content: space-around;
 }
+
 .titleA h3{
     color: #ffff;
     padding-left: 210px;
@@ -46,7 +47,7 @@
 }
 
 /* Area dos cursos */
-.areaKey{
+/* .areaKey{
     height: 250px;
     background-color: #202024;
 }
@@ -63,10 +64,10 @@
     padding-bottom: 0.5em;
     color: #ffff;
     
-}
+} */
 
 /* cards */
-.cards{
+/* .cards{
     
     box-shadow: 4px 4px 4px #121214;
     width: 250px;
@@ -92,4 +93,4 @@
     align-items: center;
     justify-content: space-around;
 }
-
+  */
