@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.content{
+    width: 80%;
+    height: 100%;
+    max-width: 75em;
+    margin: auto;
+    /* background-color: #202024; */
+
+}
+
+.flex-center-bt{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.AreaT{
+    background-color: #202024;
+}
+
+.titleA{
+    /* width: 1889px; */
+    height: 200px;
+   
+}
+
+.titleA{
+    width: 1020px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.titleA h3{
+    color: #ffff;
+    padding-left: 210px;
+}
+
+.search{
+    width: 178px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #121214;
+    background-color: #121214;
+}
+
+/* Area dos cursos */
+.areaKey{
+    height: 250px;
+    background-color: #202024;
+}
+
+.tArea{
+    padding-inline-end: 20em;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 4.6em;
+  
+}
+
+.tArea h3{
+    padding-bottom: 0.5em;
+    color: #ffff;
+    
+}
+
+/* cards */
+.cards{
+    
+    box-shadow: 4px 4px 4px #121214;
+    width: 250px;
+    height: 80px;
+    background-color: #121214;
+}
+
+.cards p{
+    padding-left: 10px;
+    font-size: 12px;
+    margin-top: 2em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cards img{
+    padding-left: 0.5em;
+    width: 48px;
+}
+
+
+.keyC{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
