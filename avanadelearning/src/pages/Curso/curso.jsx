@@ -10,6 +10,7 @@ import iconManicure from '../../assets/img/manicure.png';
 import clock from '../../assets/img/clock.svg';
 import iconCss1 from '../../assets/img/css.png';
 import iconCss2 from '../../assets/img/iconeReact.png';
+// import iconS from '../../assets/img/iconS';
 
 
 import { Card } from '../../components/card';
@@ -24,16 +25,28 @@ export function Curso() {
             <div className="areaT">
                 <div className=" flex-center-bt">
                     <div className="titleA">
-
+                        
                         <h2>Mercado de missões</h2>
 
                         {/* Botão de busca */}
-                        <input id='search' className='search'
-                        // placeholder='ID de usuário' 
+                        <div className="cont">
+                            <input type="text" 
+                                class="search"
+                                name="search"
+                                // value={userId} 
+                                onChange={(e) => this.setState({userId: e.target.value})}
+                                placeholder="Search"/>
+                            <button class="btn-search" type="submit"></button>
+                            
+                        </div>
+                        {/* <input id='search' className='search'
+                        placeholder='Search' 
+                        type="image"
                         // value={userId} 
-                        // onChange={(e) => this.setState({userId: e.target.value})}
+                        onChange={(e) => this.setState({userId: e.target.value})}
                         >
-                        </input>
+                          
+                        </input> */}
                     </div>
                 </div>
             </div>

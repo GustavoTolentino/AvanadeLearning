@@ -44,13 +44,27 @@
 
 .search{
     color:#ffff;
-    width: 178px;
-    height: 20px;
+    width: 258px;
+    height: 30px;
     border-radius: 5px;
     border: 1px solid #121214;
     background-color: #121214;
 }
+.cont{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
+.btn-search{
+    width: 30px!important;
+    height: 20px;
+    background: url(http://www.devmedia.com.br/imagens/2013/buscar_grey.png) no-repeat;
+    cursor: pointer!important;
+    border: none;
+    position: absolute;
+    transform: translateY(-50%); 
+}
 /* Area dos cursos */
 .areaKey{
     height: 400px;
