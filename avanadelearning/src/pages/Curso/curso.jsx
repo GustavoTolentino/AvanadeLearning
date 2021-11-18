@@ -4,9 +4,9 @@ import { api } from "../../services/api";
 import { Link, useHistory } from "react-router-dom";
 // import { FiClock } from 'react-icons/fi';
 
-import icon from "../../assets/img/React-icon.svg";
+// import icon from "../../assets/img/React-icon.svg";
 import iconManicure from "../../assets/img/manicure.png";
-import clock from "../../assets/img/clock.svg";
+// import clock from "../../assets/img/clock.svg";
 import iconCss1 from "../../assets/img/css.png";
 import iconCss2 from "../../assets/img/iconeReact.png";
 
