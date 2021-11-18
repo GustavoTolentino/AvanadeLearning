@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import "./styles/style.css";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
 import { FiMail } from "react-icons/fi";
 import { FaArrowLeft } from "react-icons/fa";
 import { MdOutlineLock } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { useHistory } from "react-router";
 import { api } from "../../services/api";
-import Logo from "../../AvanadeLogo.svg";
-import logoRecortada from "../Login/logoPedro.svg";
+import Logo from "../../assets/img/logoPedro.svg";
+import { Button } from "../../components/Common/Button";
+import { Input } from "../../components/Common/Input";
 
 export function Cadastro() {
   const history = useHistory();
@@ -105,7 +104,7 @@ export function Cadastro() {
           </form>
           <div className="sectionWithContent">
             <div className="logoArea">
-              <img src={logoRecortada} />
+              <img src={Logo} />
               <h1>Avanade Learning</h1>
             </div>
             <div className="textAreaRegister">

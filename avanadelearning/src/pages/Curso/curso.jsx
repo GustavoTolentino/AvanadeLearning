@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { Button } from "../../components/Button";
+// import { Button } from "../../components/Commom/Button";
 import { api } from "../../services/api";
 import { Link, useHistory } from "react-router-dom";
-// import { FiClock } from 'react-icons/fi';
-
 import icon from "../../assets/img/React-icon.svg";
-import iconManicure from "../../assets/img/manicure.png";
 import clock from "../../assets/img/clock.svg";
+import iconManicure from "../../assets/img/manicure.png";
 import iconCss1 from "../../assets/img/css.png";
-import iconCss2 from "../../assets/img/iconeReact.png";
-
-import { Card } from "../../components/card";
+import iconCss2 from "../../assets/img/css.png";
+import { Card } from "../../components/Common/Card";
 import "../Curso/style/curso.css";
 
 // const { Meta } = Card;

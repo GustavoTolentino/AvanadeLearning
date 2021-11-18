@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import "./styles/style.css";
-import { Link, useHistory } from "react-router-dom";
-import { Button } from "../../components/Button";
+import { useHistory } from "react-router-dom";
+import { Button } from "../../components/Common/Button";
 import { api } from "../../services/api";
-import axios from "axios";
-import { Input } from "../../components/Input";
-import { FaBeer } from "react-icons/fa";
+import { Input } from "../../components/Common/Input";
 import { FiMail } from "react-icons/fi";
 import { MdOutlineLock } from "react-icons/md";
-import Logo from "../../../src/AvanadeLogo.svg";
-import logoRecortada from "../Login/logoPedro.svg";
+import Logo from "../../assets/img/logoPedro.svg";
 
 export function Login() {
   const history = useHistory();
@@ -49,7 +46,7 @@ export function Login() {
       <div className="sca">
         <div className="bca">
           <div className="logoLoginArea">
-            <img src={logoRecortada} style={{ width: "128px" }} />
+            <img src={Logo} style={{ width: "128px" }} />
             <h2>Avanade Learning</h2>
           </div>
           <div>

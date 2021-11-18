@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/Common/Button";
 import { api } from "../../services/api";
 
 // import { Card } from '../../components/Card';
