@@ -43,13 +43,14 @@
 
 
 .search{
-    color:#ffff;
+    color:#fff;
     width: 178px;
     height: 20px;
     border-radius: 5px;
     border: 1px solid #121214;
     background-color: #121214;
 }
+
 
 /* Area dos cursos */
 .areaKey{
@@ -64,17 +65,28 @@
 }
 
 .card{
+    /* width: 574px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+     */
     display: flex;
     align-items: flex-end;
-    justify-content: space-around;
+    justify-content: space-evenly; 
     margin-top: 1.5em;
+
+ 
 }
 
 .card2{
-    width: 550px;
-    display: flex;
+    width: 574px;
+    /* display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 1.5em;  */
+    display: flex;
+    /* align-items: flex-end;
+    justify-content: space-around; */
     margin-top: 1.5em;
 }
 

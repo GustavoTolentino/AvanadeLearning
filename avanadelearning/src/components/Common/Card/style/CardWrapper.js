@@ -1,6 +1,6 @@
 
 import styled, { css } from 'styled-components';
-
+//https://www.luiztools.com.br/post/tutorial-listagem-com-busca-em-reactjs/
 
 export const CardWrapper = styled.div`
     display: flex;
