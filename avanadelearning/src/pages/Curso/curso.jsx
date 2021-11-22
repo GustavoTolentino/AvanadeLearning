@@ -1,21 +1,21 @@
 import React, { useState } from "react";
+// import { HiSearch } from 'react-icons/HiSearch';
 // import { Button } from "../../components/Commom/Button";
 import { api } from "../../services/api";
 import { Link, useHistory } from "react-router-dom";
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import icon from "../../assets/img/React-icon.svg";
 import clock from "../../assets/img/clock.svg";
-import iconManicure from "../../assets/img/manicure.png";
-=======
-// import { FiClock } from 'react-icons/fi';
+import iconManicure from "../../assets/img/manicure.svg";
+import iconCss1 from "../../assets/img/css.svg";
+import iconCss2 from "../../assets/img/css.svg";
+import iconI from "../../assets/img/search.svg";
 
-// import icon from "../../assets/img/React-icon.svg";
-import iconManicure from "../../assets/img/manicure.png";
-// import clock from "../../assets/img/clock.svg";
->>>>>>> 1386d3e801e67a34c96a7e26745b993c16c3fdfc
-import iconCss1 from "../../assets/img/css.png";
-import iconCss2 from "../../assets/img/css.png";
+// import  BsSearch  from 'react-icons/bs/index';
+// Componentes
 import { Card } from "../../components/Common/Card";
+import { InputS } from "../../components/Search/index";
+
 import "../Curso/style/curso.css";
 
 // const { Meta } = Card;
@@ -28,13 +28,24 @@ export function Curso() {
             <h2>Mercado de missões</h2>
 
             {/* Botão de busca */}
-            <input
+            
+            <InputS
+                className="search"
+                type="text"
+                placeholder="Search"
+                // value={userId}
+                // onChange={(e) => this.setState({userId: e.target.value})}
+                icon={iconI}
+              />
+              
+            {/* <input
               id="search"
               className="search"
               // placeholder='ID de usuário'
               // value={userId}
               // onChange={(e) => this.setState({userId: e.target.value})}
-            ></input>
+              >
+            </input>  */}
           </div>
         </div>
       </div>
@@ -72,6 +83,8 @@ export function Curso() {
               time="99h"
               textC="React.js: Paulo Experiente - Curso profissional"
             />
+
+
           </div>
 
           <div className="card2">

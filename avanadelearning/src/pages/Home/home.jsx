@@ -11,7 +11,6 @@ import img2 from "../../assets/img/img1.svg";
 import img3 from "../../assets/img/img3.svg";
 import img4 from "../../assets/img/img4.svg";
 import img5 from "../../assets/img/img2.svg";
-import banner from "../../assets/img/banner.png";
 
 import "../../assets/img/img 2.svg";
 import "../../assets/css/home.css";
