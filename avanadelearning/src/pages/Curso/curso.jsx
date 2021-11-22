@@ -2,17 +2,11 @@ import React, { useState } from "react";
 // import { Button } from "../../components/Commom/Button";
 import { api } from "../../services/api";
 import { Link, useHistory } from "react-router-dom";
-<<<<<<< HEAD
-import icon from "../../assets/img/React-icon.svg";
-import clock from "../../assets/img/clock.svg";
-import iconManicure from "../../assets/img/manicure.png";
-=======
 // import { FiClock } from 'react-icons/fi';
 
 // import icon from "../../assets/img/React-icon.svg";
 import iconManicure from "../../assets/img/manicure.png";
 // import clock from "../../assets/img/clock.svg";
->>>>>>> 1386d3e801e67a34c96a7e26745b993c16c3fdfc
 import iconCss1 from "../../assets/img/css.png";
 import iconCss2 from "../../assets/img/css.png";
 import { Card } from "../../components/Common/Card";

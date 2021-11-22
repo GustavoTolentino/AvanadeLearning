@@ -1,32 +1,28 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const FormFiveWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;  
-  background-color: #111111;
-  border: solid 2px #111111;
-  border-radius: 5px;
-  padding: 0 18px;
-  font-size: 24px;
-  margin-bottom: 12px;
-  svg {
-      color: #c1c1c1;
-    }
-  input {
-    border: none;
-    outline: none;
+
+  .formFiveBody h1 {
     color: #ffffff;
-    background-color: transparent;
-    padding: 18px 0;
+    margin-bottom: 40px;
+  }
+  .formFiveBody {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #2b2b2f;
+    /* width: 570px; */
+    padding: 60px;
+    border-radius: 8px;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .inputsAreaComponent {
     width: 100%;
   }
-
-  &:focus-within {
-    border: solid 2px #FB5700;
-
-    svg {
-      color: #FB5700;
-    }
-  }     
 `;
