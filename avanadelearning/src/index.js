@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> d4354d0d943f158af7f7efe03870117183f2f8e7
 import React from "react";
 import ReactDOM from "react-dom";
 import { Login } from "./pages/Login";

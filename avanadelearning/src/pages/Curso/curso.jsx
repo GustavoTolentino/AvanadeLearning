@@ -2,7 +2,16 @@ import React, { useState } from "react";
 // import { HiSearch } from 'react-icons/HiSearch';
 // import { Button } from "../../components/Commom/Button";
 import { api } from "../../services/api";
+<<<<<<< HEAD
 import { Link, useHistory } from "react-router-dom";
+=======
+// import { Link, useHistory } from "react-router-dom";
+// <<<<<<< HEAD
+// import { FiClock } from 'react-icons/fi';
+
+
+
+>>>>>>> d4354d0d943f158af7f7efe03870117183f2f8e7
 // <<<<<<< HEAD
 import icon from "../../assets/img/React-icon.svg";
 import clock from "../../assets/img/clock.svg";
@@ -10,16 +19,39 @@ import iconManicure from "../../assets/img/manicure.svg";
 import iconCss1 from "../../assets/img/css.svg";
 import iconCss2 from "../../assets/img/css.svg";
 import iconI from "../../assets/img/search.svg";
+<<<<<<< HEAD
 
 // import  BsSearch  from 'react-icons/bs/index';
 // Componentes
+=======
+import { FiSearch } from 'react-icons/fi';
+>>>>>>> d4354d0d943f158af7f7efe03870117183f2f8e7
 import { Card } from "../../components/Common/Card";
 import { InputS } from "../../components/Search/index";
-
 import "../Curso/style/curso.css";
+// import { SearchWrapper } from "../../components/Search/style/SearchWrapper";
 
 // const { Meta } = Card;
 export function Curso() {
+  // constructor(props) {
+  //     super(props)
+  // }
+
+  // state = {
+  //     postings: [],
+  // }
+
+  // componentDidMount() {
+  //   this.loadPostings() 
+  // }
+
+  // loadPostings = async () => {
+  //     const response = await api.get(`/posts?userId=${this.props.match.params.userId}`)
+  //     this.setState({postings: response.data})
+  // }
+
+
+
   return (
     <div>
       <div className="areaT">
@@ -28,6 +60,7 @@ export function Curso() {
             <h2>Mercado de missões</h2>
 
             {/* Botão de busca */}
+<<<<<<< HEAD
 
             <InputS
               className="search"
@@ -37,6 +70,16 @@ export function Curso() {
               // onChange={(e) => this.setState({userId: e.target.value})}
               icon={iconI}
             />
+=======
+            <InputS
+              // className="search"
+              // placeholder="pesquisar"
+              icon={<FiSearch />}
+            />
+           
+              
+        
+>>>>>>> d4354d0d943f158af7f7efe03870117183f2f8e7
 
             {/* <input
               id="search"
@@ -46,6 +89,8 @@ export function Curso() {
               // onChange={(e) => this.setState({userId: e.target.value})}
               >
             </input>  */}
+
+
           </div>
         </div>
       </div>
