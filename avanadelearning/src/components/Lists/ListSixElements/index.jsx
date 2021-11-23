@@ -1,6 +1,7 @@
 import React from "react";
 import { ListSixElementsWrapper } from "./styles/ListSixElementsWrapper";
 
+
 export function ListSixElements({
   title,
   ...props
@@ -19,19 +20,19 @@ export function ListSixElements({
       </table>
     </ListSixElementsWrapper>
 
-export function Table({ title, children }) {
-    return (
-      <TableWrapper>
-        <TableWrapper.Header>
-          <Text variant="subtitle" color="primaryText">
-            {title}
-          </Text>
-        </TableWrapper.Header>
-        <TableWrapper.Body>
-          <table>{children}</table>
-        </TableWrapper.Body>
-      </TableWrapper>
-    );
-  }
   );
 }
+// export function Table({ title, children }) {
+//   return (
+//     <TableWrapper>
+//       <TableWrapper.Header>
+//         <Text variant="subtitle" color="primaryText">
+//           {title}
+//         </Text>
+//       </TableWrapper.Header>
+//       <TableWrapper.Body>
+//         <table>{children}</table>
+//       </TableWrapper.Body>
+//     </TableWrapper>
+//   );
+// }

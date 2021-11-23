@@ -8,7 +8,7 @@ import { MdOutlineLock, MdLocationPin } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { FaRegNewspaper } from "react-icons/fa";
-import { ListSixElements } from "../../../components/Lists/ListSixElements";
+import { ListSixElements } from "../../../components/Lists/ListSixElements/index";
 
 export function Instituicao() {
   const history = useHistory();
