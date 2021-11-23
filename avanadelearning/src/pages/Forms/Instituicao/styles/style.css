@@ -3,3 +3,36 @@
   align-items: center;
   flex-direction: column;
 }
+.instituteRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+.instituteScreen {
+  background-color: #202024;
+  height: 100vh;
+}
+.instituteReturn {
+  color: #fb5700;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+.trBody {
+  word-break: break-word;
+}
+.trBody td {
+  font-size: 14px;
+  text-align: center;
+}
+#icons {
+  display: flex;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+.icon:hover {
+  color: #fb5700;
+}
