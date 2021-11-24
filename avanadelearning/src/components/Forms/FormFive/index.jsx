@@ -30,6 +30,9 @@ export function FormF({
   state5,
   method5,
   icon5,
+  updateMethod,
+  button1,
+  button2,
   ...props
 }) {
   return (
@@ -73,7 +76,12 @@ export function FormF({
             onChange={method5}
             icon={icon5}
           />
-          <Button type="submit">Cadastrar</Button>
+          <Button disable={button1} type="submit">
+            Cadastrar
+          </Button>
+          <Button disable={button2} onClick={updateMethod}>
+            Atualizar
+          </Button>
         </div>
       </form>
     </FormFiveWrapper>

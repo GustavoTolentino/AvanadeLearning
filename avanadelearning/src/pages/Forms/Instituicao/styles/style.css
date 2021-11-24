@@ -6,6 +6,7 @@
 .instituteRow {
   display: flex;
   justify-content: space-between;
+  margin-top: 50px;
   gap: 24px;
 }
 .instituteScreen {
@@ -34,5 +35,12 @@
   margin: 5px;
 }
 .icon:hover {
+  color: #fb5700;
+}
+.formColumn {
+  display: flex;
+  flex-direction: column;
+}
+.formColumn a {
   color: #fb5700;
 }

@@ -9,9 +9,13 @@ import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { FaRegNewspaper } from "react-icons/fa";
 import { ListSixElements } from "../../../components/Lists/ListSixElements/index";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Button } from "../../../components/Common/Button";
 
 export function Instituicao() {
   const history = useHistory();
+  const [idInstitute, setIdInstitute] = useState("");
   const [fantasyName, setFantasyName] = useState("");
   const [socialReason, setSocialReason] = useState("");
   const [adress, setAdress] = useState("");
@@ -19,52 +23,140 @@ export function Instituicao() {
   const [phone, setPhone] = useState("");
   const [listInstution, setListInstitution] = useState([]);
 
+  useEffect(() => {
+    getInstitutions();
+  }, []);
+
   const createInstitute = async (e) => {
     e.preventDefault();
 
     console.log("entrou no método");
-    const { data, status } = await api.post("/instituicoes", {
-      NomeFantasia: fantasyName,
-      RazaoSocial: socialReason,
-      Endereco: adress,
-      CNPJ,
-      Telefone: phone,
-    });
+    try {
+      const { data, status } = await api.post("/instituicoes", {
+        NomeFantasia: fantasyName,
+        RazaoSocial: socialReason,
+        Endereco: adress,
+        CNPJ,
+        Telefone: phone,
+      });
 
-    if (status === 200) {
-      localStorage.setItem("userToken", data.token);
-      console.log("resutlado da API foi 200");
-      console.log(data);
+      if (status === 201) {
+        localStorage.setItem("userToken", data.token);
+        console.log("A instituição foi cadastrada");
+        console.log(data);
 
-      await getInstitutions();
-    } else {
-      console.log(data);
+        await getInstitutions();
+        success();
+        limparDados();
+      }
+    } catch (error) {
+      errorPopup();
     }
   };
 
   async function getInstitutions() {
     const { data, status } = await api.get("/instituicoes");
-    console.log("Entrou no método de Get");
+    // console.log("Entrou no método de Get");
     if (status === 200) {
       setListInstitution(data);
       console.log(data);
-      console.log("Requisição voltou 200");
-      // const isInterested = data.find(
-      //   (x) => x.idUsuarioNavigation.idUsuario == tokenDecoded.jti
-      // );
+      console.log("A listagem de instituições funcionou");
     }
   }
 
-  useEffect(() => {
-    getInstitutions();
-  }, []);
   const redirectBack = async (e) => {
     history.push("/cadastro");
   };
-  const updateInstitute = async (e) => {
-    
-  };
 
+  async function updateInstitute(
+    id,
+    nomeFantasia,
+    razaoSocial,
+    endereco,
+    cnpj,
+    telefone
+  ) {
+    try {
+      const { status } = await api.put(`/instituicoes/${id}`, {
+        id,
+        nomeFantasia,
+        razaoSocial,
+        endereco,
+        cnpj,
+        telefone,
+      });
+
+      if (status === 204) {
+      }
+    } catch (error) {}
+  }
+
+  async function deleteInstitute(id) {
+    try {
+      const { status } = await api.delete(`/instituicoes/${id}`);
+      if (status === 204) {
+        deleteSuccess();
+        getInstitutions();
+      }
+    } catch (error) {
+      let errorReason = error;
+      deleteError();
+    }
+  }
+  function limparDados() {
+    setFantasyName("");
+    setSocialReason("");
+    setAdress("");
+    setCNPJ("");
+    setPhone("");
+  }
+  //#region Popups de aviso
+  const success = () =>
+    toast.success("Sua instituição foi cadastrada com sucesso!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  const errorPopup = () =>
+    toast.error(
+      "Infelizmente houve algum erro no seu cadastro, tente novamente.",
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
+  const deleteError = () => {
+    toast.error("Infelizmente houve um erro na Exclusão", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+  const deleteSuccess = () => {
+    toast.success("Sua instituição foi excluída com sucesso!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+  //#endregion
   return (
     <div className="instituteScreen">
       <div className="contentArea">
@@ -73,35 +165,49 @@ export function Instituicao() {
             <a onClick={redirectBack}>Voltar</a>
           </div>
           <div className="instituteRow">
-            <FormF
-              title="instituição"
-              onSubmit={createInstitute}
-              type="text"
-              placeholder="Nome Fantasia"
-              state={fantasyName}
-              method={(e) => setFantasyName(e.target.value)}
-              icon={<AiOutlineUser />}
-              type2="text"
-              placeholder2="Razão Social"
-              state2={socialReason}
-              method2={(e) => setSocialReason(e.target.value)}
-              icon2={<FaRegNewspaper />}
-              type3="text"
-              placeholder3="Endereço"
-              state3={adress}
-              method3={(e) => setAdress(e.target.value)}
-              icon3={<MdLocationPin />}
-              type4="number"
-              placeholder4="CNPJ"
-              state4={CNPJ}
-              method4={(e) => setCNPJ(e.target.value)}
-              icon4={<HiOutlineDocumentText />}
-              type5="number"
-              placeholder5="Telefone"
-              state5={phone}
-              method5={(e) => setPhone(e.target.value)}
-              icon5={<FiPhone />}
-            ></FormF>
+            <div className="formColumn">
+              <FormF
+                title="instituição"
+                onSubmit={createInstitute}
+                type="text"
+                placeholder="Nome Fantasia"
+                state={fantasyName}
+                method={(e) => setFantasyName(e.target.value)}
+                icon={<AiOutlineUser />}
+                type2="text"
+                placeholder2="Razão Social"
+                state2={socialReason}
+                method2={(e) => setSocialReason(e.target.value)}
+                icon2={<FaRegNewspaper />}
+                type3="text"
+                placeholder3="Endereço"
+                state3={adress}
+                method3={(e) => setAdress(e.target.value)}
+                icon3={<MdLocationPin />}
+                type4="number"
+                placeholder4="CNPJ"
+                state4={CNPJ}
+                method4={(e) => setCNPJ(e.target.value)}
+                icon4={<HiOutlineDocumentText />}
+                type5="number"
+                placeholder5="Telefone"
+                state5={phone}
+                method5={(e) => setPhone(e.target.value)}
+                icon5={<FiPhone />}
+              ></FormF>
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
+            </div>
+
             <ListSixElements title="Listagem de instituições">
               <tr>
                 <th>ID Instituição</th>
@@ -123,10 +229,19 @@ export function Instituicao() {
                   <td>
                     <div id="icons">
                       <MdEdit
-                        onClick={updateInstitute}
+                        onClick={() => {
+                          setFantasyName(item.nomeFantasia);
+                          setSocialReason(item.razaoSocial);
+                          setAdress(item.endereco);
+                          setCNPJ(item.cnpj);
+                          setPhone(item.telefone);
+                        }}
                         className="icon edit-icon"
                       />
-                      <MdClose className="icon close-icon" />
+                      <MdClose
+                        onClick={() => deleteInstitute(item.idInstituicao)}
+                        className="icon close-icon"
+                      />
                     </div>
                   </td>
                 </tr>

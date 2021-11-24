@@ -1,13 +1,22 @@
-import React from 'react';
-import { ButtonWrapper } from './styles/ButtonWrapper';
+import React from "react";
+import { ButtonWrapper } from "./styles/ButtonWrapper";
 
-export function Button({ children, ghost, border, banner, tag, ...props }) {
+export function Button({
+  children,
+  ghost,
+  border,
+  banner,
+  tag,
+  buttonVisible,
+  ...props
+}) {
   return (
     <ButtonWrapper
       ghost={ghost}
       border={border}
       banner={banner}
       as={tag}
+      disable={buttonVisible}
       {...props}
     >
       {children}

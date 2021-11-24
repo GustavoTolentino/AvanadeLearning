@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 const GhostButton = css`
   background-color: transparent;
@@ -6,9 +6,9 @@ const GhostButton = css`
   color: #ffffff;
 `;
 const BorderButton = css`
-  border: 2px solid #FB5700;
+  border: 2px solid #fb5700;
   background-color: transparent;
-  color: #FB5700;
+  color: #fb5700;
 `;
 const BannerButton = css`
   border: 2px solid #ffffff;
@@ -16,21 +16,26 @@ const BannerButton = css`
   color: #ffffff;
 `;
 const DefaultButton = css`
-  background-color: #FB5700;
+  background-color: #fb5700;
   border: none;
   color: #ffffff;
 `;
+const Visible = css`
+  display: none;
+`;
+
 export const ButtonWrapper = styled.button`
   padding: 22px 17px;
   border-radius: 8px;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
   width: 100%;
-  ${({ ghost, border, banner }) => {
+  ${({ ghost, border, banner, disable }) => {
     if (ghost) return GhostButton;
     if (border) return BorderButton;
     if (banner) return BannerButton;
+    if (disable) return Visible;
     return DefaultButton;
   }};
 `;
