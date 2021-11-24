@@ -5,7 +5,7 @@ import { CardWrapper } from "./style/CardWrapper";
 /*https://medium.com/techatquero/rtfm-cards-5b20952e8bfa*/
 //https://www.luiztools.com.br/post/tutorial-listagem-com-busca-em-reactjs/
 
-export function Card({ icon, time, textC }) {
+export function Card({ iconH,icon, time, textC }) {
   return (
     <CardWrapper>
       {/*        
@@ -13,7 +13,7 @@ export function Card({ icon, time, textC }) {
       <div className="icon">
         <img src={icon} />
         <div className="iText flex-center-bt">
-          {/* <img src={clock} /> */}
+         {iconH}
           <p>{time}</p>
         </div>
       </div>

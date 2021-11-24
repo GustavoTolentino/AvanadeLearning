@@ -9,6 +9,7 @@ export const CardWrapper = styled.div`
     width: 250px;
     height: 90px;
     background-color: #121214;
+    margin-top: 0.9em;
     
     .icon{
         widht :60px;
