@@ -20,6 +20,7 @@ export const CardWrapper = styled.div`
         align-items:center;
     }
     
+    
     .icon img{
       width: 35px; 
     }

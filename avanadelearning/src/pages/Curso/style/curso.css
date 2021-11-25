@@ -84,7 +84,10 @@
 
  
 }
-
+.iconH{
+    color:#fff;
+    width: 10px;
+}
 .card3{
     display: flex;
     flex-direction: row;

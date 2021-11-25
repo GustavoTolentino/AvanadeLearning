@@ -27,10 +27,10 @@ input {
 }
 
 &:focus-within {
-  border: solid 2px #FB5700;
+  border: solid 2px #transparent;
 
   svg {
-    color: #FB5700;
+    color: #transparent;
   }
 }
  
