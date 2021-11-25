@@ -195,6 +195,9 @@ export function Instituicao() {
                 method5={(e) => setPhone(e.target.value)}
                 icon5={<FiPhone />}
               ></FormF>
+              {/* <Button disable={false} onClick={updateInstitute}>
+                Atualizar
+              </Button> */}
               <ToastContainer
                 position="top-right"
                 autoClose={5000}

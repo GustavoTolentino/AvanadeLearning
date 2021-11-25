@@ -76,12 +76,7 @@ export function FormF({
             onChange={method5}
             icon={icon5}
           />
-          <Button disable={button1} type="submit">
-            Cadastrar
-          </Button>
-          <Button disable={button2} onClick={updateMethod}>
-            Atualizar
-          </Button>
+          <Button type="submit">Cadastrar</Button>
         </div>
       </form>
     </FormFiveWrapper>

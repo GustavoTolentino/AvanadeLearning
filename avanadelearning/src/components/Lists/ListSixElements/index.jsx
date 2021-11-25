@@ -1,7 +1,12 @@
 import React from "react";
 import { ListSixElementsWrapper } from "./styles/ListSixElementsWrapper";
 
-export function ListSixElements({ title, children }) {
+export function ListSixElements({
+  title,
+  children,
+  ...props
+}) {
+
   return (
     <ListSixElementsWrapper>
       <div className="TableWrapperHeader">
@@ -13,6 +18,8 @@ export function ListSixElements({ title, children }) {
     </ListSixElementsWrapper>
   );
 }
+
+
 // export function Table({ title, children }) {
 //   return (
 //     <TableWrapper>

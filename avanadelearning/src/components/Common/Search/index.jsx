@@ -2,11 +2,11 @@
 // import { HiSearch } from 'react-icons/HiSearch';
 import { SearchWrapper } from './style/SearchWrapper';
 
-export function InputS({ placeholder, value, method, icon, ...props }) {
+export function InputS({ value, method, icon, type, ...props }) {
     return(
         <SearchWrapper>
             <input
-                placeholder={placeholder}
+                type={type}
                 value={value}
                 onChange={method}
                 {...props}
