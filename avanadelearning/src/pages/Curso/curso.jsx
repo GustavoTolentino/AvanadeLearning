@@ -38,7 +38,7 @@ export function Curso() {
     setIsLoading(true);
     console.log("vamos fazer a chamada para a API para atualizar os cursos")
     // vamos fazer a chamada para a API usando axios
-    axios('http://localhost:5000/api/curso', { params,
+    axios('http://localhost:5000/api/cursos', {
       headers: {
         'Authorization': 'Bearer' + localStorage.getItem('usuario-login')
       }
@@ -46,19 +46,18 @@ export function Curso() {
       //   'Authorization': 'Bearer' + api.getItem('usuario-login')
       // }
     })
-
       // Caso a resposta da requisição retorne um status code 200
       .then(resposta => {
         if (resposta.status === 200) {
           // Chama a função que atualiza o state listaTiposUsuarios
           setListaCursos(resposta.data);
-
+          setIsLoading(false);
         };
       })
       // Caso ocorra algum erro, mostra no console do navegador
       .catch(erro => console.log(erro));
   };
-
+  
   console.log(search);
 
   // Neste caso, o efeito só é disparado uma única vez, ou seja, a função buscarTiposUsuarios
@@ -66,13 +65,9 @@ export function Curso() {
   
   useEffect(() => { 
     listarCurso();
-    setSearch();
-  }, [search]);
-  
-  const params = {};
-  if(search){
-    params.nome = search;
-  }
+ 
+  }, []);
+  //useEffect( listarCurso, [] );
 
   return (
     <div>
@@ -112,7 +107,7 @@ export function Curso() {
                     textC={tipoCurso.descricao}
                     time={tipoCurso.horas}
                   // iconH={<AiOutlineClockCircle />}
-                  // onChange={(e) => setListaCursos(e.target.value)}
+                    onChange={(e) => setListaCursos(e.target.value)}
                   />
                 );
               })
@@ -179,7 +174,6 @@ export function Curso() {
             <h3>Missões Diversas</h3>
           </div>
           <div className="card3">
-
             {
               listaCursos.map((tipoCurso) => {
                 return (
