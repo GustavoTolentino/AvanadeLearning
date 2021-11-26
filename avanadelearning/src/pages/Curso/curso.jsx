@@ -24,68 +24,40 @@ import { InputS } from "../../components/Common/Search/index";
 export function Curso() {
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);
-  const [nome, setName] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [imagem, setImagem] = useState("");
-  const [horas, setHoras] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
+
+  // const [nome, setName] = useState("");
+  // const [descricao, setDescricao] = useState("");
+  // const [imagem, setImagem] = useState("");
+  // const [horas, setHoras] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
   // const [searchField, setSearchField] = useState("");
   // const [searchShow, setSearchShow] = useState(false);
 
-    setListaCursos = () => {
-        api.get('/cursos')
-        .then(response => {
-            if(response.status === 200){
-                this.setState({ listaCursos : response.data })
-            }
-        })
+
+  async function getCursos() {
+    const { data, status } = await api.get("/Cursos")
+    if (status == 200) {
+      setListaCursos(data);
+      console.log(data);
     }
-  function buscarCursos() {
-    console.log("vamos fazer a chamada para a API para atualizar a tabela");
-    // vamos fazer a chamada para a API usando axios
-    axios("http://localhost:5000/api/curso", {
-      headers: {
-        Authorization: "Bearer" + localStorage.getItem("usuario-login"),
-      },
-    });
   }
 
-  // Função responsável por fazer a requisição e trazer a lista de tipos eventos
-  // function listarCurso() {
-  //   setIsLoading(true);
-  //   console.log("vamos fazer a chamada para a API para atualizar os cursos")
-  //   // vamos fazer a chamada para a API usando axios
-  //   axios('http://localhost:5000/api/cursos', {
-  //     headers: {
-  //       'Authorization': 'Bearer' + localStorage.getItem('usuario-login')
-  //     }
-  //     // headers: {
-  //     //   'Authorization': 'Bearer' + api.getItem('usuario-login')
-  //     // }
-  //   })
-  //     // Caso a resposta da requisição retorne um status code 200
-  //     .then(resposta => {
-  //       if (resposta.status === 200) {
-  //         // Chama a função que atualiza o state listaTiposUsuarios
-  //         setListaCursos(resposta.data);
-  //         setIsLoading(false);
-  //       };
-  //     })
-  //     // Caso ocorra algum erro, mostra no console do navegador
-  //     .catch(erro => console.log(erro));
-  // };
+  // const handleChange = ({ target }) => {
+  //   // se não tiver target.value
+  //   if (target.value) {
+  //     //nós vamos setar os repsitórios
+  //     setSearch(listaCursos)
+  //   }
+  // }
+
+  useEffect(() => {
+    getCursos();
   
+  },[]);
+
   console.log(search);
 
-  // Neste caso, o efeito só é disparado uma única vez, ou seja, a função buscarTiposUsuarios
-  // só é invocada uma vez porque não estamos escutando nada
-  
-  useEffect(() => { 
-    listarCurso();
- 
-  }, []);
-  //useEffect( listarCurso, [] );
 
   return (
     <div>
@@ -132,20 +104,19 @@ export function Curso() {
             {
               listaCursos.map((tipoCurso) => {
                 return (
-                  <Card 
+                  <Card
                     key={tipoCurso.idCurso}
                     id={tipoCurso.idCurso}
                     nome={tipoCurso.nome}
                     icon={tipoCurso.imagem}
                     textC={tipoCurso.descricao}
                     time={tipoCurso.horas}
-                  // iconH={<AiOutlineClockCircle />}
+                    // iconH={<AiOutlineClockCircle />}
                     onChange={(e) => setListaCursos(e.target.value)}
                   />
                 );
               })
             }
->>>>>>> 04a96fc847afaad93313999e89c8a2fc0b91370c
             <Card
               // onChange={(e) => redirectAula(e.target.value)}
               icon={iconCss2}
@@ -212,12 +183,14 @@ export function Curso() {
               listaCursos.map((tipoCurso) => {
                 return (
                   <Card
-                    key={tipoCurso.idCurso}
+                key={tipoCurso.idCurso}
+                    id={tipoCurso.idCurso}
+                    nome={tipoCurso.nome}
                     icon={tipoCurso.imagem}
                     textC={tipoCurso.descricao}
                     time={tipoCurso.horas}
-                  // iconH={<AiOutlineClockCircle />}
-                  // onChange={(e) => setListaCursos(e.target.value)}
+                    // iconH={<AiOutlineClockCircle />}
+                    onChange={(e) => setListaCursos(e.target.value)}
                   />
                 );
               })
