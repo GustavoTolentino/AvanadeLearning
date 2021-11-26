@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from "react";
-// import "./styles/style.css";
+import "./styles/style.css";
 import { useHistory } from "react-router-dom";
-import { ReactVideo } from "reactjs-media";
-import YouTube from "react-youtube";
 import { Button } from "../../components/Common/Button";
 import { api } from "../../services/api";
-import { FiMail } from "react-icons/fi";
-import { MdOutlineLock } from "react-icons/md";
+import { Title } from "../../components/Common/Title";
 
 export function Aula() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [lessonLink, setLessonLink] = useState("");
-
+  const [lessonTitle, setLessonTitle] = useState("");
+  const [videoID, setVideoID] = useState("");
   useEffect(() => {
     getLessonLink();
-  }, []);
+  }, "");
 
-  function getLessonLink() {
+  async function getLessonLink() {
     console.log("chamado");
-    setLessonLink("https://youtu.be/C5-3JUkA3Uo" + "?rel=0");
-    console.log(lessonLink);
+
+    // let link = "https://youtu.be/C5-3JUkA3Uo" + "?rel=0";
+    await setLessonLink(
+      "https://www.youtube.com/embed/" + { videoID } + "?rel=0"
+    );
   }
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -48,25 +49,32 @@ export function Aula() {
       autoplay: 1,
     },
   };
+  console.log(lessonLink);
 
   function _onReady(event) {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
   }
   return (
-    <div>
+    <div className="videoPageContent">
       <div className="contentArea">
-        <YouTube videoId="ehJTwlmTfzU" opts={opts} onReady={_onReady} />
+        <div className="videoColumn">
+          <div className="lessonArea">
+            <iframe
+              src={lessonLink}
+              allow="fullscreen;"
+              frameBorder="0"
+              width="640"
+              height="360"
+            />
+
+            {/* AREA DE CURSO ASSISTIDO, FALTANDO COMPONENTE */}
+          </div>
+          <div>
+            <Title>{lessonTitle}</Title>
+          </div>
+        </div>
       </div>
-      <ReactVideo
-        src="https://youtu.be/ehJTwlmTfzU"
-        poster="/poster.png"
-        primaryColor="red"
-        autoPlay
-      />
-      <iframe src={lessonLink} frameBorder="0" />
-      {/* <iframe src="https://youtu.be/ehJTwlmTfzU"></iframe> */}
-      {/* <iframe src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com" /> */}
     </div>
   );
 }

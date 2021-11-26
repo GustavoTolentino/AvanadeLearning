@@ -25,6 +25,10 @@
 .trBody td {
   font-size: 14px;
   text-align: center;
+  /* background-color: #fb5700; */
+}
+.trBody tr {
+  background-color: #fb5700;
 }
 #icons {
   display: flex;

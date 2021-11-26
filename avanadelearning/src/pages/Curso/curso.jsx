@@ -29,18 +29,17 @@ export function Curso() {
   const [imagem, setImagem] = useState("");
   const [horas, setHoras] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
   // const [searchField, setSearchField] = useState("");
   // const [searchShow, setSearchShow] = useState(false);
 
-    setListaCursos = () => {
-        api.get('/cursos')
-        .then(response => {
-            if(response.status === 200){
-                this.setState({ listaCursos : response.data })
-            }
-        })
-    }
+  setListaCursos = () => {
+    api.get("/cursos").then((response) => {
+      if (response.status === 200) {
+        this.setState({ listaCursos: response.data });
+      }
+    });
+  };
   function buscarCursos() {
     console.log("vamos fazer a chamada para a API para atualizar a tabela");
     // vamos fazer a chamada para a API usando axios
@@ -75,16 +74,15 @@ export function Curso() {
   //     // Caso ocorra algum erro, mostra no console do navegador
   //     .catch(erro => console.log(erro));
   // };
-  
+
   console.log(search);
 
   // Neste caso, o efeito só é disparado uma única vez, ou seja, a função buscarTiposUsuarios
   // só é invocada uma vez porque não estamos escutando nada
-  
-  useEffect(() => { 
-    listarCurso();
- 
-  }, []);
+
+  // useEffect(() => {
+  //   listarCurso();
+  // }, []);
   //useEffect( listarCurso, [] );
 
   return (
@@ -101,8 +99,6 @@ export function Curso() {
               onChange={(event) => setSearch(event.target.value)}
               icon={<FiSearch />}
             />
-
-
           </div>
         </div>
       </div>
@@ -129,23 +125,20 @@ export function Curso() {
                 />
               );
             })}
-            {
-              listaCursos.map((tipoCurso) => {
-                return (
-                  <Card 
-                    key={tipoCurso.idCurso}
-                    id={tipoCurso.idCurso}
-                    nome={tipoCurso.nome}
-                    icon={tipoCurso.imagem}
-                    textC={tipoCurso.descricao}
-                    time={tipoCurso.horas}
+            {listaCursos.map((tipoCurso) => {
+              return (
+                <Card
+                  key={tipoCurso.idCurso}
+                  id={tipoCurso.idCurso}
+                  nome={tipoCurso.nome}
+                  icon={tipoCurso.imagem}
+                  textC={tipoCurso.descricao}
+                  time={tipoCurso.horas}
                   // iconH={<AiOutlineClockCircle />}
-                    onChange={(e) => setListaCursos(e.target.value)}
-                  />
-                );
-              })
-            }
->>>>>>> 04a96fc847afaad93313999e89c8a2fc0b91370c
+                  onChange={(e) => setListaCursos(e.target.value)}
+                />
+              );
+            })}
             <Card
               // onChange={(e) => redirectAula(e.target.value)}
               icon={iconCss2}
@@ -208,20 +201,18 @@ export function Curso() {
             <h3>Missões Diversas</h3>
           </div>
           <div className="card3">
-            {
-              listaCursos.map((tipoCurso) => {
-                return (
-                  <Card
-                    key={tipoCurso.idCurso}
-                    icon={tipoCurso.imagem}
-                    textC={tipoCurso.descricao}
-                    time={tipoCurso.horas}
+            {listaCursos.map((tipoCurso) => {
+              return (
+                <Card
+                  key={tipoCurso.idCurso}
+                  icon={tipoCurso.imagem}
+                  textC={tipoCurso.descricao}
+                  time={tipoCurso.horas}
                   // iconH={<AiOutlineClockCircle />}
                   // onChange={(e) => setListaCursos(e.target.value)}
-                  />
-                );
-              })
-            }
+                />
+              );
+            })}
             <Card
               icon={iconManicure}
               time="06h"

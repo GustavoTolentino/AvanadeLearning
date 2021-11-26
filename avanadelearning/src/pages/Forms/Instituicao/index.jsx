@@ -213,7 +213,7 @@ export function Instituicao() {
 
             <ListSixElements title="Listagem de instituições">
               <tr>
-                <th>ID Instituição</th>
+                {/* <th>ID Instituição</th> */}
                 <th>Nome Fantasia</th>
                 <th>Razão Social</th>
                 <th>Enredeço</th>
@@ -223,7 +223,7 @@ export function Instituicao() {
               </tr>
               {listInstution.map((item) => (
                 <tr key={item.idInstituicao} className="trBody">
-                  <td>{item.idInstituicao}</td>
+                  {/* <td>{item.idInstituicao}</td> */}
                   <td>{item.nomeFantasia}</td>
                   <td>{item.razaoSocial}</td>
                   <td>{item.endereco}</td>

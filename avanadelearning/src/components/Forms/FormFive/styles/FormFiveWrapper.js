@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 export const FormFiveWrapper = styled.div`
   display: flex;
   align-items: center;
+  width: 500px;
 
   .formFiveBody h1 {
     color: #ffffff;

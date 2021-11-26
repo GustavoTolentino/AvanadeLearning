@@ -7,6 +7,8 @@ import { Input } from "../../components/Common/Input";
 import { FiMail } from "react-icons/fi";
 import { MdOutlineLock } from "react-icons/md";
 import Logo from "../../assets/img/logoPedro.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function Login() {
   const history = useHistory();
@@ -24,15 +26,26 @@ export function Login() {
 
     if (status === 200) {
       localStorage.setItem("userToken", data.token);
-      console.log("resutlado da API foi 200");
-
-      console.log(data);
       history.push("/curso");
+    } else {
+      loginError();
     }
   };
 
   const redirectRegister = async (e) => {
     history.push("/cadastro");
+  };
+
+  const loginError = () => {
+    toast.error("Verifique seu E-mail e senha e tente novamente!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -86,6 +99,17 @@ export function Login() {
                 </a>
               </h4>
             </form>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
           </section>
         </div>
       </div>

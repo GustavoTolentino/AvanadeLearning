@@ -1,0 +1,11 @@
+.videoPageContent {
+  background-color: #202024;
+  height: 100vh;
+}
+.videoColumn {
+  display: flex;
+  flex-direction: column;
+}
+.lessonArea {
+  display: flex;
+}
