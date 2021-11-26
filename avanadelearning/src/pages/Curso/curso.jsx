@@ -33,7 +33,14 @@ export function Curso() {
   // const [searchField, setSearchField] = useState("");
   // const [searchShow, setSearchShow] = useState(false);
 
-<<<<<<< HEAD
+    setListaCursos = () => {
+        api.get('/cursos')
+        .then(response => {
+            if(response.status === 200){
+                this.setState({ listaCursos : response.data })
+            }
+        })
+    }
   function buscarCursos() {
     console.log("vamos fazer a chamada para a API para atualizar a tabela");
     // vamos fazer a chamada para a API usando axios
@@ -43,31 +50,31 @@ export function Curso() {
       },
     });
   }
-=======
+
   // Função responsável por fazer a requisição e trazer a lista de tipos eventos
-  function listarCurso() {
-    setIsLoading(true);
-    console.log("vamos fazer a chamada para a API para atualizar os cursos")
-    // vamos fazer a chamada para a API usando axios
-    axios('http://localhost:5000/api/cursos', {
-      headers: {
-        'Authorization': 'Bearer' + localStorage.getItem('usuario-login')
-      }
-      // headers: {
-      //   'Authorization': 'Bearer' + api.getItem('usuario-login')
-      // }
-    })
-      // Caso a resposta da requisição retorne um status code 200
-      .then(resposta => {
-        if (resposta.status === 200) {
-          // Chama a função que atualiza o state listaTiposUsuarios
-          setListaCursos(resposta.data);
-          setIsLoading(false);
-        };
-      })
-      // Caso ocorra algum erro, mostra no console do navegador
-      .catch(erro => console.log(erro));
-  };
+  // function listarCurso() {
+  //   setIsLoading(true);
+  //   console.log("vamos fazer a chamada para a API para atualizar os cursos")
+  //   // vamos fazer a chamada para a API usando axios
+  //   axios('http://localhost:5000/api/cursos', {
+  //     headers: {
+  //       'Authorization': 'Bearer' + localStorage.getItem('usuario-login')
+  //     }
+  //     // headers: {
+  //     //   'Authorization': 'Bearer' + api.getItem('usuario-login')
+  //     // }
+  //   })
+  //     // Caso a resposta da requisição retorne um status code 200
+  //     .then(resposta => {
+  //       if (resposta.status === 200) {
+  //         // Chama a função que atualiza o state listaTiposUsuarios
+  //         setListaCursos(resposta.data);
+  //         setIsLoading(false);
+  //       };
+  //     })
+  //     // Caso ocorra algum erro, mostra no console do navegador
+  //     .catch(erro => console.log(erro));
+  // };
   
   console.log(search);
 
@@ -79,7 +86,6 @@ export function Curso() {
  
   }, []);
   //useEffect( listarCurso, [] );
->>>>>>> 04a96fc847afaad93313999e89c8a2fc0b91370c
 
   return (
     <div>
@@ -108,7 +114,6 @@ export function Curso() {
             <h3>Missões de Tecnologia</h3>
           </div>
           <div className="card">
-<<<<<<< HEAD
             {listaCursos.map((tipoCurso) => {
               return (
                 <Card
@@ -124,7 +129,6 @@ export function Curso() {
                 />
               );
             })}
-=======
             {
               listaCursos.map((tipoCurso) => {
                 return (
