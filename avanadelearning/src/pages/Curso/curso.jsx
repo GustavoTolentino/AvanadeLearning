@@ -22,17 +22,12 @@ import { InputS } from "../../components/Common/Search/index";
 //https://medium.com/reactbrasil/criando-lista-din%C3%A2mica-utilizando-reactjs-38f5faf65431
 
 export function Curso() {
+
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);
   const [search, setSearch] = useState("");
+  const [image, setImage] = useState([]);
 
-  // const [nome, setName] = useState("");
-  // const [descricao, setDescricao] = useState("");
-  // const [imagem, setImagem] = useState("");
-  // const [horas, setHoras] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [searchField, setSearchField] = useState("");
-  // const [searchShow, setSearchShow] = useState(false);
 
   async function getCursos() {
     const { data, status } = await api.get("/Cursos");
@@ -42,16 +37,36 @@ export function Curso() {
     }
   }
 
-  // const handleChange = ({ target }) => {
-  //   // se não tiver target.value
-  //   if (target.value) {
-  //     //nós vamos setar os repsitórios
-  //     setSearch(listaCursos)
-  //   }
+  // const images = (image) => {
+  //   await api.get('http://localhost:5000/api/Resources/Images', image.single('manicure.png'), 
+  //   ( image) => image.send('Sucesso'));
+    
   // }
+
+
+  // filtro de busca
+  const Buscar = (busca) => {
+
+    setSearch(busca);
+
+    const filtro = listaCursos.filter(e => {
+      if (busca === '') {
+        getCursos();
+        return e
+      }
+      else if (e.nome.toLocaleLowerCase().includes(busca.toLocaleLowerCase())) {
+        return e
+      }
+      return null
+    });
+
+    setListaCursos(filtro);
+  }
 
   useEffect(() => {
     getCursos();
+   
+
   }, []);
 
   console.log(search);
@@ -65,9 +80,10 @@ export function Curso() {
 
             {/* Botão de busca */}
             <InputS
+
               type="text"
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              onChange={(e) => Buscar(e.target.value)}
               icon={<FiSearch />}
             />
           </div>
@@ -85,21 +101,6 @@ export function Curso() {
               return (
                 <Card
                   key={tipoCurso.idCurso}
-                  icon={tipoCurso.imagem}
-                  textC={tipoCurso.descricao}
-                  time={tipoCurso.horas}
-                  // onChange={(e) => redirectAula(e.target.value)}
-                  icon={iconCss2}
-                  time="06h"
-                  textC="React.js: Criando o projeto e
-                     instalando os pacotes"
-                />
-              );
-            })}
-            {listaCursos.map((tipoCurso) => {
-              return (
-                <Card
-                  key={tipoCurso.idCurso}
                   id={tipoCurso.idCurso}
                   nome={tipoCurso.nome}
                   icon={tipoCurso.imagem}
@@ -110,57 +111,6 @@ export function Curso() {
                 />
               );
             })}
-            <Card
-              // onChange={(e) => redirectAula(e.target.value)}
-              icon={iconCss2}
-              iconH={<AiOutlineClockCircle />}
-              time="06h"
-              textC="React.js: Criando o projeto e
-                                 instalando os pacotes"
-            />
-
-            {/*<Card
-              onChange={(e) => redirectAula(e.target.value)}
-              icon={iconCss2}
-              time="06h"
-              textC="React.js: Criando o projeto e
-                                 instalando os pacotes"
-            />
-              <Card
-              onChange={(e) => redirectAula(e.target.value)}
-              icon={iconCss2}
-              time="06h"
-              textC="React.js: Criando o projeto e
-                                 instalando os pacotes"
-            />
-              <Card
-              onChange={(e) => redirectAula(e.target.value)}
-              icon={iconCss2}
-              time="06h"
-              textC="React.js: Criando o projeto e
-                                 instalando os pacotes"
-            />
-            <Card
-              onChange={(e) => redirectAula(e.target.value)}
-              icon={iconCss2}
-              time="06h"
-              textC="React.js: Criando o projeto e
-                                 instalando os pacotes"
-            />
-            <Card
-              onChange={(e) => redirectAula(e.target.value)}
-              icon={iconCss2}
-              time="06h"
-              textC="React.js: Criando o projeto e
-                                 instalando os pacotes"
-            />
-            <Card
-              onChange={(e) => redirectAula(e.target.value)}
-              icon={iconCss2}
-              time="06h"
-              textC="React.js: Criando o projeto e
-                                 instalando os pacotes"
-            /> */}
           </div>
         </div>
       </section>
@@ -186,12 +136,6 @@ export function Curso() {
                 />
               );
             })}
-            <Card
-              icon={iconManicure}
-              time="06h"
-              textC="Manicure: Aprendendo sobre
-              o contraste das cores"
-            />
           </div>
         </div>
       </section>

@@ -5,15 +5,12 @@ import { CardWrapper } from "./style/CardWrapper";
 /*https://medium.com/techatquero/rtfm-cards-5b20952e8bfa*/
 //https://www.luiztools.com.br/post/tutorial-listagem-com-busca-em-reactjs/
 
-export function Card({ id,nome,iconH,icon, time, textC,button }) {
+export function Card({icon, time, textC }) {
   return (
     <CardWrapper>
-      
       {/*        
         {/* Icone do curso e as horas que dura */}
       <div className="icon">
-        {/* id={id}
-        nome={nome} */}
         <img src={icon} />
         <div className="iText flex-center-bt">
           {/* {iconH} */}
