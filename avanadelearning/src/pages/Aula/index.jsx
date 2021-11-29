@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./styles/style.css";
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Button } from "../../components/Common/Button";
 import { api } from "../../services/api";
 import { Title } from "../../components/Common/Title";
+import { Description } from "../../components/Common/Description";
 
 export function Aula() {
   const history = useHistory();
@@ -12,49 +15,56 @@ export function Aula() {
   const [lessonLink, setLessonLink] = useState("");
   const [lessonTitle, setLessonTitle] = useState("");
   const [videoID, setVideoID] = useState("");
-  useEffect(() => {
-    getLessonLink();
-  }, "");
+  const [description, setVideoDescription] = useState("");
+  const [lessonInfo, setLessonInfo] = useState({});
 
-  async function getLessonLink() {
-    console.log("chamado");
+  useEffect(async () => {
+    await LoadPage();
+  }, []);
 
+  async function LoadPage() {
+    try {
+      await GetLessonInfo(3);
+
+      GetLessonLink();
+    } catch (error) {
+      loadDataError();
+    }
+  }
+
+  async function GetLessonInfo(id) {
+    try {
+      const { data, status } = await api.get(`/aulas/${id}`);
+      if (status === 200) {
+        setLessonInfo(data);
+      }
+    } catch (error) {
+      loadDataError();
+    }
+  }
+
+  async function GetLessonLink() {
     // let link = "https://youtu.be/C5-3JUkA3Uo" + "?rel=0";
-    await setLessonLink(
-      "https://www.youtube.com/embed/" + { videoID } + "?rel=0"
+    setLessonLink(
+      "https://www.youtube.com/embed/" + lessonInfo.video + "?rel=0"
     );
   }
-  const handleSignIn = async (e) => {
-    e.preventDefault();
 
-    // console.log("entrou no método");
-    // const { data, status } = await api.post("/Login", {
-    //   Email: email,
-    //   Senha: password,
-    // });
-
-    // if (status === 200) {
-    //   localStorage.setItem("userToken", data.token);
-    //   console.log("resutlado da API foi 200");
-
-    //   console.log(data);
-    //   history.push("/curso");
-    // }
+  const loadDataError = () => {
+    toast.error("Infelizmente houve um erro na Exclusão", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
-  const opts = {
-    height: "390",
-    width: "640",
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
+
+  console.log(lessonInfo.video);
   console.log(lessonLink);
 
-  function _onReady(event) {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
-  }
   return (
     <div className="videoPageContent">
       <div className="contentArea">
@@ -70,8 +80,14 @@ export function Aula() {
 
             {/* AREA DE CURSO ASSISTIDO, FALTANDO COMPONENTE */}
           </div>
-          <div>
-            <Title>{lessonTitle}</Title>
+          <div className="videoInfoArea">
+            <Title>React.js testando sei la o que</Title>
+            <h2>Descrição</h2>
+            <div>
+              <hr></hr>
+              <hr></hr>
+            </div>
+            <p>{lessonInfo.descricao}</p>
           </div>
         </div>
       </div>
