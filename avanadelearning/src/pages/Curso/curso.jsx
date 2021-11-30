@@ -4,31 +4,31 @@ import { Link, useHistory } from "react-router-dom";
 import { api } from "../../services/api";
 import "../Curso/style/curso.css";
 
-import icon from "../../assets/img/React-icon.svg";
-import clock from "../../assets/img/clock.svg";
-import iconManicure from "../../assets/img/manicure.svg";
-import iconCss1 from "../../assets/img/css.svg";
-import iconCss2 from "../../assets/img/css.svg";
-import iconI from "../../assets/img/search.svg";
+// import icon from "../../assets/img/React-icon.svg";
+// import clock from "../../assets/img/clock.png";
+// import iconManicure from "../../assets/img/manicure.svg";
+// import iconCss1 from "../../assets/img/css.svg";
+// import iconCss2 from "../../assets/img/css.svg";
+// import iconI from "../../assets/img/search.svg";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineClockCircle } from "react-icons/ai";
-
 import { Card } from "../../components/Common/Card";
 import { InputS } from "../../components/Common/Search/index";
-// const { Meta } = Card;
+
+
 
 //https://dev.to/alexandrefreire/react-native-flexbox-55gk
 //https://www.kadunew.com/blog/css/diferenca-entre-as-propriedades-margin-e-padding-do-css
 //https://medium.com/reactbrasil/criando-lista-din%C3%A2mica-utilizando-reactjs-38f5faf65431
 
 export function Curso() {
-
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);
   const [search, setSearch] = useState("");
-  const [image, setImage] = useState([]);
+  const [image, setImage] = useState("");
 
-
+  
+  //faz a chamada para a  Listagem de todos os cursos existentes
   async function getCursos() {
     const { data, status } = await api.get("/Cursos");
     if (status == 200) {
@@ -36,19 +36,10 @@ export function Curso() {
       console.log(data);
     }
   }
-
-  // const images = (image) => {
-  //   await api.get('http://localhost:5000/api/Resources/Images', image.single('manicure.png'), 
-  //   ( image) => image.send('Sucesso'));
-    
-  // }
-
-
+  
   // filtro de busca
   const Buscar = (busca) => {
-
     setSearch(busca);
-
     const filtro = listaCursos.filter(e => {
       if (busca === '') {
         getCursos();
@@ -59,16 +50,19 @@ export function Curso() {
       }
       return null
     });
-
     setListaCursos(filtro);
+  } 
+
+  async function getImage() {
+    setImage("https://localhost:5001/api/Resources/Image")
   }
 
+  // renderiza a lista de cursos
   useEffect(() => {
     getCursos();
-   
-
+ 
   }, []);
-
+  //retorna no console a chamada de search
   console.log(search);
 
   return (
@@ -99,14 +93,15 @@ export function Curso() {
           <div className="card">
             {listaCursos.map((tipoCurso) => {
               return (
+                console.log(tipoCurso.imagem),
                 <Card
                   key={tipoCurso.idCurso}
                   id={tipoCurso.idCurso}
                   nome={tipoCurso.nome}
                   icon={tipoCurso.imagem}
                   textC={tipoCurso.descricao}
-                  time={tipoCurso.horas}
-                  // iconH={<AiOutlineClockCircle />}
+                  iconH={<AiOutlineClockCircle />}
+                  time={tipoCurso.horas + 'h'}
                   onChange={(e) => setListaCursos(e.target.value)}
                 />
               );
