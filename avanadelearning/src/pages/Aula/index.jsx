@@ -7,6 +7,8 @@ import { Button } from "../../components/Common/Button";
 import { api } from "../../services/api";
 import { Title } from "../../components/Common/Title";
 import { Description } from "../../components/Common/Description";
+import { TableSeen } from "../../components/Common/TableSeen";
+import ReactDOM from "react-dom";
 
 export function Aula() {
   const history = useHistory();
@@ -18,37 +20,29 @@ export function Aula() {
   const [description, setVideoDescription] = useState("");
   const [lessonInfo, setLessonInfo] = useState({});
 
-  useEffect(async () => {
-    await LoadPage();
+  useEffect(() => {
+    LoadPage();
   }, []);
 
-  async function LoadPage() {
+  const LoadPage = async () => {
     try {
       await GetLessonInfo(3);
-
-      GetLessonLink();
     } catch (error) {
-      loadDataError();
+      await loadDataError();
     }
-  }
+  };
 
-  async function GetLessonInfo(id) {
+  const GetLessonInfo = async (id) => {
     try {
       const { data, status } = await api.get(`/aulas/${id}`);
       if (status === 200) {
         setLessonInfo(data);
+        setLessonLink("https://www.youtube.com/embed/" + data.video + "?rel=0");
       }
     } catch (error) {
       loadDataError();
     }
-  }
-
-  async function GetLessonLink() {
-    // let link = "https://youtu.be/C5-3JUkA3Uo" + "?rel=0";
-    setLessonLink(
-      "https://www.youtube.com/embed/" + lessonInfo.video + "?rel=0"
-    );
-  }
+  };
 
   const loadDataError = () => {
     toast.error("Infelizmente houve um erro na Exclusão", {
@@ -62,9 +56,6 @@ export function Aula() {
     });
   };
 
-  console.log(lessonInfo.video);
-  console.log(lessonLink);
-
   return (
     <div className="videoPageContent">
       <div className="contentArea">
@@ -77,8 +68,8 @@ export function Aula() {
               width="640"
               height="360"
             />
-
             {/* AREA DE CURSO ASSISTIDO, FALTANDO COMPONENTE */}
+            <TableSeen>Teste</TableSeen>
           </div>
           <div className="videoInfoArea">
             <Title>React.js testando sei la o que</Title>
@@ -87,7 +78,7 @@ export function Aula() {
               <hr></hr>
               <hr></hr>
             </div>
-            <p>{lessonInfo.descricao}</p>
+            <Description>{lessonInfo.descricao}</Description>
           </div>
         </div>
       </div>
