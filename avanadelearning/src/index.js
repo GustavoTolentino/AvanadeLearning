@@ -6,6 +6,7 @@ import { Home } from "../src/pages/Home/home";
 import { Curso } from "./pages/Curso/curso";
 import { Instituicao } from "./pages/Forms/Instituicao";
 import { Aula } from "./pages/Aula";
+import { CadastrarCurso } from "./pages/Forms/cadastrarCurso";
 import "./index.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -15,6 +16,7 @@ export const routing = (
       <Route path="/login" component={Login} />
       <Route path="/cadastro" component={Cadastro} />
       <Route path="/curso" component={Curso} />
+      <Route path="/cadastrarCurso" component={CadastrarCurso} />
       <Route path="/instituicao" component={Instituicao} />
       <Route path="/aula" component={Aula} />
       <Route path="*" component={Home} />

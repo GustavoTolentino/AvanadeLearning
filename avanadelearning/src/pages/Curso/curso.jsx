@@ -10,6 +10,7 @@ import "../Curso/style/curso.css";
 // import iconCss1 from "../../assets/img/css.svg";
 // import iconCss2 from "../../assets/img/css.svg";
 // import iconI from "../../assets/img/search.svg";
+
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { Card } from "../../components/Common/Card";
@@ -54,20 +55,27 @@ export function Curso() {
     setListaCursos(filtro);
   }
 
+  // api.get(`/Cursos/${imagem}`, function(rec, res){
+  //   const file = await api.get(`/Cursos/${imagem}`);
+  //   res.imagem(file);
+  // })
+
+
   // trazendo a url das imagens de cursos
-  const getImage = async (imagem) => {
-    const { data, status } = await api.get(`/curso/${imagem}`);
-    if (status === 200) {
-      setImage(data);
-      setAway("https://localhost:5001/api/Resources/" + data.imagem + "Image");
-    }
-  };
+  // const getImage = async (imagem) => {
+  //   const { data, status } = await api.get(`/Cursos/${imagem}`);
+  //   if (status === 200) {
+  //     setImage(data);
+  //     setAway("https://localhost:5001/api/Resources/" + data.imagem + "Images");
+  //   }
+  // };
 
 
+ 
   // renderiza a lista de cursos e as imagens
   useEffect(() => {
     getCursos();
-    getImage();
+    // getImage();
 
   }, []);
   //retorna no console a chamada de search
@@ -98,9 +106,10 @@ export function Curso() {
           <div className="tArea">
             <h3>Missões de Tecnologia</h3>
           </div>
-          <div className="card">
+          <div className="card" >
             {listaCursos.map((tipoCurso) => {
               return (
+                
                 console.log(tipoCurso.imagem),
                 <Card
                   key={tipoCurso.idCurso}
@@ -115,6 +124,8 @@ export function Curso() {
               );
             })}
           </div>
+
+          
         </div>
       </section>
 
@@ -133,7 +144,8 @@ export function Curso() {
                   nome={tipoCurso.nome}
                   icon={tipoCurso.imagem}
                   textC={tipoCurso.descricao}
-                  time={tipoCurso.horas}
+                   iconH={<AiOutlineClockCircle />}
+                   time={tipoCurso.horas + 'h'}
                   // iconH={<AiOutlineClockCircle />}
                   onChange={(e) => setListaCursos(e.target.value)}
                 />

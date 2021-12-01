@@ -16,7 +16,14 @@ export function Card({ iconH,icon,time, textC }) {
         {/* Icone do curso e as horas que dura */}
       <div className="iconC">
        {/* <img src={`../../../../assets/img/` + icon} /> */}
-       <img src={`data:imagem;base64,${icon}`} />
+      <button><img src={`https://localhost:5001/Resources/Images/` + icon} alt="my image" onClick={icon} /> </button> 
+      {/* <img src={`https://localhost:5001/Resources/Images/` + icon} /> */}
+
+       {/* Convertendo a imagem em base64 */}
+       {/* <img src={`data:imagem;base64,${icon}`} /> */}
+
+       {/* Chamando a imagem com uma variavel */}
+       {/* <img src={icon} /> */}
         <div className="iText flex-center-bt">
            {iconH}
           <p>{time}</p>

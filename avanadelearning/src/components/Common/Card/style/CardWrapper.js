@@ -11,6 +11,7 @@ export const CardWrapper = styled.div`
     background-color: #121214;
     margin-top: 0.9em;
     
+    
     .iconC{
         widht :60px;
         height: 60px;
@@ -22,7 +23,9 @@ export const CardWrapper = styled.div`
     
     
     .iconC img{
-      width: 35px; 
+      width: 50px; 
+      height: 50px;
+      
     }
     
     .iText img{
@@ -34,18 +37,16 @@ export const CardWrapper = styled.div`
       heigt:30px;
       display:flex;
       align-items: center;
-
-        
+      
     }
-
     svg{
       widht: 1em;
      color: #808080;
-     margin-bottom: 2em ;
+     margin-bottom: 2.1em ;
     }
 
     .tIcon{
-      margin-top:20px;
+      margin-top:30px;
       padding-left: 20px;
     }
 
@@ -53,7 +54,7 @@ export const CardWrapper = styled.div`
      
       font-family: 'poppins';
       font-size: 10px;
-      padding: 1em 1em 1em;
+      padding: 0.5em 0.5em 0.5em;
     }
 
    
