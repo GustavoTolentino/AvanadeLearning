@@ -8,6 +8,7 @@ export function Button({
   banner,
   tag,
   buttonVisible,
+  listSeen,
   ...props
 }) {
   return (
@@ -17,6 +18,7 @@ export function Button({
       banner={banner}
       as={tag}
       disable={buttonVisible}
+      listSeen={listSeen}
       {...props}
     >
       {children}

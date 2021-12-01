@@ -6,27 +6,65 @@ export const TableSeenWrapper = styled.div`
   .tabletable {
     color: #ffffff;
   }
-  /* 
-  body {
-    display: block;
-  }
-  .span3 input:focus ~ .alert {
-    display: none;
-  }
-  .span2 input:focus ~ .alert {
-    display: block;
-  }
-  .inputShow::focus ~ .alert {
-    display: block;
-  }
-  .inputHide::focus ~ .alert {
-    display: none;
+
+  details summary {
+    background-color: #202024;
   }
 
-  .alert {
+  summary::before {
+    content: "testes";
+  }
+
+  .check {
+    background-color: red;
+    /* appearance: none; */
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+  }
+
+  .lessonRow:before {
+  }
+
+  .lessonRow:after {
+    content: "";
     display: block;
-  } */
-  input#show,
+    border: 1px solid #000;
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+    background-color: #ddd;
+  }
+  .lessonRow:before {
+    content: "";
+    display: block;
+    border: 1px solid #000;
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+    background-color: #ddd;
+  }
+
+  .check:checked {
+    background-color: blue;
+  }
+
+  .checkColumn {
+    display: flex;
+    flex-direction: column;
+  }
+  .lessonRow {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .lessonRow p {
+    margin-bottom: 0;
+    margin-left: 5px;
+  }
+  /* input#show,
   input#hide {
     display: none;
   }
@@ -49,5 +87,5 @@ export const TableSeenWrapper = styled.div`
   }
   label::after {
     display: none;
-  }
+  } */
 `;

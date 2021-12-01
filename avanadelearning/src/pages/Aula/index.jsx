@@ -55,6 +55,7 @@ export function Aula() {
       progress: undefined,
     });
   };
+  
 
   return (
     <div className="videoPageContent">

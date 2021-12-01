@@ -24,6 +24,14 @@ const Visible = css`
   display: none;
 `;
 
+const ListSeen = css`
+  border-radius: 999px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  
+`;
+
 export const ButtonWrapper = styled.button`
   padding: 22px 17px;
   border-radius: 8px;
@@ -31,11 +39,12 @@ export const ButtonWrapper = styled.button`
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   width: 100%;
-  ${({ ghost, border, banner, disable }) => {
+  ${({ ghost, border, banner, disable, listSeen }) => {
     if (ghost) return GhostButton;
     if (border) return BorderButton;
     if (banner) return BannerButton;
     if (disable) return Visible;
+    if (listSeen) return ListSeen;
     return DefaultButton;
   }};
 `;
