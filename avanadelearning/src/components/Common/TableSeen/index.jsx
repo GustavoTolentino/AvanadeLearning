@@ -19,19 +19,12 @@ export function TableSeen({ lessonTitle, children }) {
 
         <details open>
           <summary>{lessonTitle}</summary>
-          <div className="checkColumn">
-            {/* {listLesson.map((item) => (
-              <Button key={item.idInstituicao} listSeen></Button>
-            ))} */}
-            {/* <Button listSeen></Button> */}
-            <div className="lessonRow">
-              <input className="check" type="checkbox"></input>
-              <p>1 Aula react</p>
-            </div>
-            <input className="check" type="checkbox"></input>
-            <input className="check" type="checkbox"></input>
-          </div>
-          <p></p>
+          <ul>
+            <li>
+              <button></button>
+              <a>1 React.js criando a solução</a>
+            </li>
+          </ul>
         </details>
       </div>
     </TableSeenWrapper>
