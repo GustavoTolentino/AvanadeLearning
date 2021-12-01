@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles/style.css";
+import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,6 +13,7 @@ import ReactDOM from "react-dom";
 
 export function Aula() {
   const history = useHistory();
+  const { idAula } = useParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [lessonLink, setLessonLink] = useState("");
@@ -21,12 +23,12 @@ export function Aula() {
   const [lessonInfo, setLessonInfo] = useState({});
 
   useEffect(() => {
-    LoadPage();
-  }, []);
+    GetLessonInfo(idAula);
+  }, [idAula]);
 
-  const LoadPage = async () => {
+  const LoadPage = async (id) => {
     try {
-      await GetLessonInfo(3);
+      await GetLessonInfo(id);
     } catch (error) {
       await loadDataError();
     }
@@ -55,7 +57,6 @@ export function Aula() {
       progress: undefined,
     });
   };
-  
 
   return (
     <div className="videoPageContent">
@@ -73,6 +74,8 @@ export function Aula() {
             <TableSeen>Teste</TableSeen>
           </div>
           <div className="videoInfoArea">
+            {/* <Link to={`/ad/${ad.idAnuncio}`}> */}
+
             <Title>React.js testando sei la o que</Title>
             <h2>Descrição</h2>
             <div>

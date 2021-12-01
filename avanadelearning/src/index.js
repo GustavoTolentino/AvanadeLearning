@@ -18,7 +18,7 @@ export const routing = (
       <Route path="/curso" component={Curso} />
       <Route path="/cadastrarCurso" component={CadastrarCurso} />
       <Route path="/instituicao" component={Instituicao} />
-      <Route path="/aula" component={Aula} />
+      <Route path="/aula/:idAula" component={Aula} />
       <Route path="*" component={Home} />
     </Switch>
   </Router>
