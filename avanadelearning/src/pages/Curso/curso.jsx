@@ -26,8 +26,9 @@ export function Curso() {
   const [listaCursos, setListaCursos] = useState([]);
   const [search, setSearch] = useState("");
   const [image, setImage] = useState("");
+  const [away, setAway] = useState("");
 
-  
+
   //faz a chamada para a  Listagem de todos os cursos existentes
   async function getCursos() {
     const { data, status } = await api.get("/Cursos");
@@ -36,7 +37,7 @@ export function Curso() {
       console.log(data);
     }
   }
-  
+
   // filtro de busca
   const Buscar = (busca) => {
     setSearch(busca);
@@ -51,16 +52,23 @@ export function Curso() {
       return null
     });
     setListaCursos(filtro);
-  } 
-
-  async function getImage() {
-    setImage("https://localhost:5001/api/Resources/Image")
   }
 
-  // renderiza a lista de cursos
+  // trazendo a url das imagens de cursos
+  const getImage = async (imagem) => {
+    const { data, status } = await api.get(`/curso/${imagem}`);
+    if (status === 200) {
+      setImage(data);
+      setAway("https://localhost:5001/api/Resources/" + data.imagem + "Image");
+    }
+  };
+
+
+  // renderiza a lista de cursos e as imagens
   useEffect(() => {
     getCursos();
- 
+    getImage();
+
   }, []);
   //retorna no console a chamada de search
   console.log(search);
