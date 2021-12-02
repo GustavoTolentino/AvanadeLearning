@@ -62,14 +62,6 @@ export const TableSeenWrapper = styled.div`
     }
   }
 
-  /* &:focus-within {
-    background-color: blue;
-
-    :before {
-      background-color: blue;
-    }
-  } */
-
   .checkColumn {
     display: flex;
     flex-direction: column;
@@ -84,32 +76,26 @@ export const TableSeenWrapper = styled.div`
     margin-bottom: 0;
     margin-left: 5px;
   }
-  /* input#show,
-  input#hide {
-    display: none;
+  .simpleLessonButton {
+    position: relative;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 0;
+    background: #fb5700;
+    margin-right: 30px;
   }
-
-  span#content {
-    display: none;
+  .simpleLessonButton:before {
+    content: "";
+    width: 2px;
+    height: 20px;
+    background-color: #fb5700;
+    top: -14px;
+    left: 6px;
+    position: relative;
   }
-  input#show:checked ~ span#content {
-    display: block;
-  }
-
-  input#hide:checked ~ span#content {
-    display: none;
-  }
-  input#hide::after {
-    display: none;
-  }
-  input#show::after {
-    display: none;
-  }
-  label::after {
-    display: none;
-  } */
-
-  li button {
+  .lessonSeenButton {
     position: relative;
     cursor: pointer;
     width: 10px !important;
@@ -120,11 +106,11 @@ export const TableSeenWrapper = styled.div`
     flex-shrink: 0;
     z-index: 2;
     transition: box-shadow 0.2s ease 0s;
-    background: rgb(4, 211, 97);
+    background: #fb5700;
   }
-  li button:before {
+  .lessonSeenButton:before {
     background: rgb(32, 32, 36);
-    border: 2px solid rgb(4, 211, 97);
+    border: 2px solid #fb5700;
     border-radius: 50%;
 
     content: "";
@@ -135,8 +121,8 @@ export const TableSeenWrapper = styled.div`
     height: 20px;
     transform: translate(-50%, -50%);
   }
-  li button:after {
-    background: rgb(4, 211, 97);
+  .lessonSeenButton:after {
+    background: #fb5700;
     content: "";
     position: absolute;
     top: 0px;
@@ -148,5 +134,9 @@ export const TableSeenWrapper = styled.div`
   }
   ul {
     list-style-type: none;
+  }
+  .liAlign {
+    display: flex;
+    align-items: center;
   }
 `;

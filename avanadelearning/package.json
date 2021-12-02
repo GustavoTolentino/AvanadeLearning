@@ -17,6 +17,7 @@
     "react-youtube": "^7.13.1",
     "reactjs-media": "^2.1.4",
     "styled-components": "^5.3.3",
+    "vertical-timeline-component-react": "^2.1.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
