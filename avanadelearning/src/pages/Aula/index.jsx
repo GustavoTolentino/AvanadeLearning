@@ -9,6 +9,7 @@ import { api } from "../../services/api";
 import { Title } from "../../components/Common/Title";
 import { Description } from "../../components/Common/Description";
 import { TableSeen } from "../../components/Common/TableSeen";
+import { Header } from "../../components/Navigation/Header";
 import ReactDOM from "react-dom";
 
 export function Aula() {
@@ -59,30 +60,33 @@ export function Aula() {
   };
 
   return (
-    <div className="videoPageContent">
-      <div className="contentArea">
-        <div className="videoColumn">
-          <div className="lessonArea">
-            <iframe
-              src={lessonLink}
-              allow="fullscreen;"
-              frameBorder="0"
-              width="640"
-              height="360"
-            />
-            {/* AREA DE CURSO ASSISTIDO, FALTANDO COMPONENTE */}
-            <TableSeen>Teste</TableSeen>
-          </div>
-          <div className="videoInfoArea">
-            {/* <Link to={`/ad/${ad.idAnuncio}`}> */}
-
-            <Title>React.js testando sei la o que</Title>
-            <h2>Descrição</h2>
-            <div>
-              <hr></hr>
-              <hr></hr>
+    <div>
+      <Header></Header>
+      <div className="videoPageContent">
+        <div className="contentArea">
+          <div className="videoColumn">
+            <div className="lessonArea">
+              <iframe
+                src={lessonLink}
+                allow="fullscreen;"
+                frameBorder="0"
+                width="640"
+                height="360"
+              />
+              {/* AREA DE CURSO ASSISTIDO, FALTANDO COMPONENTE */}
+              <TableSeen>Teste</TableSeen>
             </div>
-            <Description>{lessonInfo.descricao}</Description>
+            <div className="videoInfoArea">
+              {/* <Link to={`/ad/${ad.idAnuncio}`}> */}
+
+              <Title>React.js - Preparando o ambiente</Title>
+              <h2>Descrição</h2>
+              <div className="hrContentArea">
+                <hr className="lightHr"></hr>
+                <hr className="whiteHr"></hr>
+              </div>
+              <Description>{lessonInfo.descricao}</Description>
+            </div>
           </div>
         </div>
       </div>
