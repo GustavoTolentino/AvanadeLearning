@@ -25,10 +25,11 @@ import { InputS } from "../../components/Common/Search/index";
 export function Curso() {
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);
+  const [categoria,setCategoria] = useState([]);
   const [search, setSearch] = useState("");
-  const [image, setImage] = useState("");
-  const [away, setAway] = useState("");
-
+  const [idVideo, setVideo] = useState("");
+  const [aula, setAula] = useState("");
+  const [loading, setIsLoading] = useState("");
 
   //faz a chamada para a  Listagem de todos os cursos existentes
   async function getCursos() {
@@ -38,6 +39,28 @@ export function Curso() {
       console.log(data);
     }
   }
+
+  // buscando aulas atraves do seu id
+  async function buscarPorId(id){
+    try{
+      setIsLoading( true );
+      
+      // const {data , status} = await api.get(`/aulas/${id}`);
+      const {data , status} = await api.get(`/aulas/${id}`);
+      if(status == 200) {
+        setVideo(data);
+        // setAula("https:localhost:5000/" + data.idVideo);
+        console.log(data)
+      }
+    } catch(error){
+      setIsLoading();
+    }
+  }
+
+  // useEffect(() => {
+  //   buscarPorId();   
+  // }, []);
+
 
   // filtro de busca
   const Buscar = (busca) => {
@@ -55,42 +78,24 @@ export function Curso() {
     setListaCursos(filtro);
   }
 
-  // api.get(`/Cursos/${imagem}`, function(rec, res){
-  //   const file = await api.get(`/Cursos/${imagem}`);
-  //   res.imagem(file);
-  // })
-
-
-  // trazendo a url das imagens de cursos
-  // const getImage = async (imagem) => {
-  //   const { data, status } = await api.get(`/Cursos/${imagem}`);
-  //   if (status === 200) {
-  //     setImage(data);
-  //     setAway("https://localhost:5001/api/Resources/" + data.imagem + "Images");
-  //   }
-  // };
-
-
  
   // renderiza a lista de cursos e as imagens
   useEffect(() => {
     getCursos();
+    buscarPorId(idVideo);   
     // getImage();
-
   }, []);
+
   //retorna no console a chamada de search
   console.log(search);
-
   return (
     <div>
       <div className="areaT">
         <div className=" flex-center-bt">
           <div className="titleA">
             <h2>Mercado de missões</h2>
-
             {/* Botão de busca */}
             <InputS
-
               type="text"
               value={search}
               onChange={(e) => Buscar(e.target.value)}
@@ -99,7 +104,6 @@ export function Curso() {
           </div>
         </div>
       </div>
-
       {/* seção dos cursos */}
       <section className="areaKey">
         <div className="content">
@@ -109,8 +113,10 @@ export function Curso() {
           <div className="card" >
             {listaCursos.map((tipoCurso) => {
               return (
-                
+                //{'/Aula/' + idVideo}
                 console.log(tipoCurso.imagem),
+                // <Link style={{ textDecoration: 'none' }} to={'/Aula/' + idVideo} >
+                <Link style={{ textDecoration: 'none' }} to={`/aula/${tipoCurso.idCurso}`} >
                 <Card
                   key={tipoCurso.idCurso}
                   id={tipoCurso.idCurso}
@@ -121,14 +127,12 @@ export function Curso() {
                   time={tipoCurso.horas + 'h'}
                   onChange={(e) => setListaCursos(e.target.value)}
                 />
+                </Link>
               );
             })}
           </div>
-
-          
         </div>
       </section>
-
       {/* seção dos cursos  2*/}
       <section className="areaKey ">
         <div className="content">

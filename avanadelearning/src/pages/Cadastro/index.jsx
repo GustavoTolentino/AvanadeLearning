@@ -9,6 +9,8 @@ import { api } from "../../services/api";
 import Logo from "../../assets/img/logoPedro.svg";
 import { Button } from "../../components/Common/Button";
 import { Input } from "../../components/Common/Input";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function Cadastro() {
   const history = useHistory();
@@ -46,7 +48,8 @@ export function Cadastro() {
         console.log("A aplicação passou pela requisição da API");
         if (status === 201) history.push("/login");
       } catch (error) {
-        throw new Error(error.message);
+        console.log(error.message);
+        errorPopup();
       }
     } else {
       setErrorMessage("Dados Inválidos");
@@ -57,6 +60,20 @@ export function Cadastro() {
   const redirectLogin = async (e) => {
     history.push("/login");
   };
+
+  const errorPopup = () =>
+  toast.error(
+    "Infelizmente houve algum erro no seu cadastro, tente novamente.",
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    }
+  );
 
   return (
     <div>
@@ -98,7 +115,17 @@ export function Cadastro() {
                 <a className="gambi">termos de uso</a> e a nossa{" "}
                 <a className="gambi">política de privacidade</a>.
               </p>
-
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
               <Button type="submit">Cadastrar</Button>
             </div>
           </form>
