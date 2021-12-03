@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../components/Common/Button";
 import { api } from "../../services/api";
+import { Header } from "../../components/Navigation/Header";
 
 // import { Card } from '../../components/Card';
 
@@ -28,6 +29,7 @@ export function Home() {
 
   return (
     <div>
+      <Header></Header>
       <div className="sectionKey">
         {/* <img src={banner} alt="" /> */}
         <div className="t">

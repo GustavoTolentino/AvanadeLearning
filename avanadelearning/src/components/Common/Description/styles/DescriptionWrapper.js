@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const DescriptionWrapper = styled.p`
-  font-weight: bold;
+  font-weight: 500;
   font-family: "Poppins", sans-serif;
-  font-size: large;
+  color: #a8a8b3;
+  font-size: 16px;
 `;

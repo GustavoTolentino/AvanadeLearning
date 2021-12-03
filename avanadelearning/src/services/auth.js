@@ -1,4 +1,3 @@
-// Define a constante usuarioAutenticado para verificar se o usuário está logado
 export const usuarioAutenticado = () =>
   localStorage.getItem('userToken') !== null;
 

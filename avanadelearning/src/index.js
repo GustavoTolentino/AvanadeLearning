@@ -6,7 +6,7 @@ import { Home } from "../src/pages/Home/home";
 import { Curso } from "./pages/Curso/curso";
 import { Instituicao } from "./pages/Forms/Instituicao";
 import { Aula } from "./pages/Aula";
-import { CadastrarCurso } from "./pages/Forms/cadastrarCurso";
+import { CadastrarCurso } from "./pages/Forms/Curso";
 import "./index.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
