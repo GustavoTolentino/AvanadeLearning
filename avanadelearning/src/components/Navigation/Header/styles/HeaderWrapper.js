@@ -32,7 +32,7 @@ export const HeaderWrapper = styled.header`
   }
   .firstBlock {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
   }
   .header-avatar {
     span {

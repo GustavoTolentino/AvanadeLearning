@@ -25,30 +25,25 @@ export function Cadastro() {
     e.preventDefault();
     const token = localStorage.getItem("userToken");
 
-    console.log(email, name, password, confirmPassword);
-
     if (password == confirmPassword) {
-      console.log("A senha de confirmação era igual a senha passada.");
+      //console.log("A senha de confirmação era igual a senha passada.");
       try {
-        console.log("Entrou no Try ao invés do Catch");
-        const { data, status } = await api.post(
-          "usuarios",
-          {
-            // idUsuario: userInfo.jti,
-            Email: email,
-            Nome: name,
-            Senha: password,
-          },
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        console.log("A aplicação passou pela requisição da API");
+        console.log(email, name, password, confirmPassword);
+
+        let form = new FormData();
+        form.append("idTipoUsuario", 1);
+        form.append("Nome", name);
+        form.append("Email", email);
+        form.append("Senha", password);
+
+        //console.log("Entrou no Try ao invés do Catch");
+        const { data, status } = await api.post("/usuarios", form);
+
+        //console.log("A aplicação passou pela requisição da API");
         if (status === 201) history.push("/login");
       } catch (error) {
-        console.log(error.message);
+        //console.log(error.message);
+        //console.log(name);
         errorPopup();
       }
     } else {
@@ -62,18 +57,18 @@ export function Cadastro() {
   };
 
   const errorPopup = () =>
-  toast.error(
-    "Infelizmente houve algum erro no seu cadastro, tente novamente.",
-    {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    }
-  );
+    toast.error(
+      "Infelizmente houve algum erro no seu cadastro, tente novamente.",
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
 
   return (
     <div>

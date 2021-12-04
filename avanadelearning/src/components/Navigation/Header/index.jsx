@@ -22,12 +22,30 @@ export function Header() {
           <div className="divLogo">
             <img src={logo}></img>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "40px",
+            }}
+          >
+            <Link to="/">Home</Link>
+            <Link to="/curso">Cursos</Link>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              // justifyContent: "space-between",
+              gap: "24px",
+              // border: "solid 2px green",
+            }}
+          >
             {userLoggedIn ? (
               <>
                 {/* <Link to="/">Inicio</Link> */}
-                <Link to="/">Home</Link>
-                <Link to="/curso">Cursos</Link>
                 <Button ghost onClick={handleSignout}>
                   Sair
                 </Button>
@@ -39,17 +57,23 @@ export function Header() {
                     gap: "24px",
                   }}
                 >
-                  <span>Bem-vindo, {userInfo.family_name}!</span>
-                  <Link to="/profile">
-                    <Avatar photo={userInfo.imagem} />
+                  <span
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      wordBreak: "keep-all",
+                      width: "240px",
+                    }}
+                  >
+                    Bem-vindo, {userInfo.nome}!
+                  </span>
+                  <Link to="/perfil">
+                    <Avatar photo={`userInfo.imagem`} />
                   </Link>
                 </div>
               </>
             ) : (
               <>
-                <Link to="/">Home</Link>
-                <Link to="/curso">Cursos</Link>
-
                 <Button onClick={() => history.push("/login")} ghost>
                   Entrar
                 </Button>

@@ -15,8 +15,7 @@ import { FiSearch } from "react-icons/fi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { Card } from "../../components/Common/Card";
 import { InputS } from "../../components/Common/Search/index";
-
-
+import { Header } from "../../components/Navigation/Header";
 
 //https://dev.to/alexandrefreire/react-native-flexbox-55gk
 //https://www.kadunew.com/blog/css/diferenca-entre-as-propriedades-margin-e-padding-do-css
@@ -25,7 +24,7 @@ import { InputS } from "../../components/Common/Search/index";
 export function Curso() {
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);
-  const [categoria,setCategoria] = useState([]);
+  const [categoria, setCategoria] = useState([]);
   const [search, setSearch] = useState("");
   const [idVideo, setVideo] = useState("");
   const [aula, setAula] = useState("");
@@ -41,48 +40,47 @@ export function Curso() {
   }
 
   // buscando aulas atraves do seu id
-  async function buscarPorId(id){
-    try{
-      setIsLoading( true );
-      
+  async function buscarPorId(id) {
+    try {
+      setIsLoading(true);
+
       // const {data , status} = await api.get(`/aulas/${id}`);
-      const {data , status} = await api.get(`/aulas/${id}`);
-      if(status == 200) {
+      const { data, status } = await api.get(`/aulas/${id}`);
+      if (status == 200) {
         setVideo(data);
         // setAula("https:localhost:5000/" + data.idVideo);
-        console.log(data)
+        console.log(data);
       }
-    } catch(error){
+    } catch (error) {
       setIsLoading();
     }
   }
 
   // useEffect(() => {
-  //   buscarPorId();   
+  //   buscarPorId();
   // }, []);
-
 
   // filtro de busca
   const Buscar = (busca) => {
     setSearch(busca);
-    const filtro = listaCursos.filter(e => {
-      if (busca === '') {
+    const filtro = listaCursos.filter((e) => {
+      if (busca === "") {
         getCursos();
-        return e
+        return e;
+      } else if (
+        e.nome.toLocaleLowerCase().includes(busca.toLocaleLowerCase())
+      ) {
+        return e;
       }
-      else if (e.nome.toLocaleLowerCase().includes(busca.toLocaleLowerCase())) {
-        return e
-      }
-      return null
+      return null;
     });
     setListaCursos(filtro);
-  }
+  };
 
- 
   // renderiza a lista de cursos e as imagens
   useEffect(() => {
     getCursos();
-    buscarPorId(idVideo);   
+    buscarPorId(idVideo);
     // getImage();
   }, []);
 
@@ -90,6 +88,7 @@ export function Curso() {
   console.log(search);
   return (
     <div>
+      <Header></Header>
       <div className="areaT">
         <div className=" flex-center-bt">
           <div className="titleA">
@@ -110,24 +109,29 @@ export function Curso() {
           <div className="tArea">
             <h3>Missões de Tecnologia</h3>
           </div>
-          <div className="card" >
+          <div className="card">
             {listaCursos.map((tipoCurso) => {
               return (
                 //{'/Aula/' + idVideo}
                 console.log(tipoCurso.imagem),
-                // <Link style={{ textDecoration: 'none' }} to={'/Aula/' + idVideo} >
-                <Link style={{ textDecoration: 'none' }} to={`/aula/${tipoCurso.idCurso}`} >
-                <Card
-                  key={tipoCurso.idCurso}
-                  id={tipoCurso.idCurso}
-                  nome={tipoCurso.nome}
-                  icon={tipoCurso.imagem}
-                  textC={tipoCurso.descricao}
-                  iconH={<AiOutlineClockCircle />}
-                  time={tipoCurso.horas + 'h'}
-                  onChange={(e) => setListaCursos(e.target.value)}
-                />
-                </Link>
+                (
+                  // <Link style={{ textDecoration: 'none' }} to={'/Aula/' + idVideo} >
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/aula/${tipoCurso.idCurso}`}
+                  >
+                    <Card
+                      key={tipoCurso.idCurso}
+                      id={tipoCurso.idCurso}
+                      nome={tipoCurso.nome}
+                      icon={tipoCurso.imagem}
+                      textC={tipoCurso.descricao}
+                      iconH={<AiOutlineClockCircle />}
+                      time={tipoCurso.horas + "h"}
+                      onChange={(e) => setListaCursos(e.target.value)}
+                    />
+                  </Link>
+                )
               );
             })}
           </div>
@@ -148,8 +152,8 @@ export function Curso() {
                   nome={tipoCurso.nome}
                   icon={tipoCurso.imagem}
                   textC={tipoCurso.descricao}
-                   iconH={<AiOutlineClockCircle />}
-                   time={tipoCurso.horas + 'h'}
+                  iconH={<AiOutlineClockCircle />}
+                  time={tipoCurso.horas + "h"}
                   // iconH={<AiOutlineClockCircle />}
                   onChange={(e) => setListaCursos(e.target.value)}
                 />
