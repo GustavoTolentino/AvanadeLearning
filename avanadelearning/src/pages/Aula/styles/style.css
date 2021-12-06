@@ -7,13 +7,17 @@
 .videoColumn {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .lessonArea {
   display: flex;
   margin-top: 50px;
 }
 .videoInfoArea {
+  width: 50%;
   color: #ffffff;
+  word-break: break-word;
 }
 .videoInfoArea h2 {
   color: #e1e1e6;

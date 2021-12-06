@@ -70,16 +70,16 @@ export function Aula() {
                 src={lessonLink}
                 allow="fullscreen;"
                 frameBorder="0"
-                width="640"
-                height="360"
+                width="700"
+                height="420"
               />
               {/* AREA DE CURSO ASSISTIDO, FALTANDO COMPONENTE */}
-              <TableSeen>Teste</TableSeen>
+              {/* <TableSeen>Teste</TableSeen> */}
             </div>
             <div className="videoInfoArea">
               {/* <Link to={`/ad/${ad.idAnuncio}`}> */}
 
-              <Title>React.js - Preparando o ambiente</Title>
+              <Title>C# - Programação Orientada ao Objeto</Title>
               <h2>Descrição</h2>
               <div className="hrContentArea">
                 <hr className="lightHr"></hr>
