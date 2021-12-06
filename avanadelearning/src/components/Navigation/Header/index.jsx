@@ -68,7 +68,9 @@ export function Header() {
                     Bem-vindo, {userInfo.nome}!
                   </span>
                   <Link to="/perfil">
-                    <Avatar photo={`userInfo.imagem`} />
+                    <Avatar
+                      photo={`https://localhost:5001/api/resources/images/${userInfo.imagem}`}
+                    />
                   </Link>
                 </div>
               </>
