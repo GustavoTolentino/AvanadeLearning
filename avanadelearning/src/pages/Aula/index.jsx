@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles/style.css";
 import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button } from "../../components/Common/Button";
@@ -22,6 +22,7 @@ export function Aula() {
   const [videoID, setVideoID] = useState("");
   const [description, setVideoDescription] = useState("");
   const [lessonInfo, setLessonInfo] = useState({});
+  
 
   useEffect(() => {
     GetLessonInfo(idAula);

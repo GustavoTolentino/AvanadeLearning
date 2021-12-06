@@ -27,8 +27,10 @@ export function Curso() {
   const [categoria, setCategoria] = useState([]);
   const [search, setSearch] = useState("");
   const [idVideo, setVideo] = useState("");
-  const [aula, setAula] = useState("");
   const [loading, setIsLoading] = useState("");
+  const [modulo, setModulo] = useState("");
+
+  const [aulaModulo, setAulaModulo] = useState("");
 
   //faz a chamada para a  Listagem de todos os cursos existentes
   async function getCursos() {
@@ -39,13 +41,27 @@ export function Curso() {
     }
   }
 
+  // async function getModulos(id) {
+  //   const { data, status} = await api.get(`/modulo/${id}`);
+  //   if (status == 200) {
+  //     setModulo(data);
+  //     console.log(data);
+  //   }
+  // }
+
+  // async function getAulaModulo(id) {
+  //   const { data, status } = await api.get(`/aulaModulo/${id}`);
+  //   if (status == 200) {
+  //     setAulaModulo(data);
+  //     console.log(data);
+  //   }
+  // }
   // buscando aulas atraves do seu id
   async function buscarPorId(id) {
     try {
       setIsLoading(true);
-
       // const {data , status} = await api.get(`/aulas/${id}`);
-      const { data, status } = await api.get(`/aulas/${id}`);
+      const { data, status } = await api.get(`/aula/${id}`);
       if (status == 200) {
         setVideo(data);
         // setAula("https:localhost:5000/" + data.idVideo);
@@ -55,10 +71,6 @@ export function Curso() {
       setIsLoading();
     }
   }
-
-  // useEffect(() => {
-  //   buscarPorId();
-  // }, []);
 
   // filtro de busca
   const Buscar = (busca) => {
@@ -77,11 +89,12 @@ export function Curso() {
     setListaCursos(filtro);
   };
 
-  // renderiza a lista de cursos e as imagens
+  // renderiza a lista de cursos 
   useEffect(() => {
     getCursos();
     buscarPorId(idVideo);
-    // getImage();
+    // getModulos();
+    // getAulaModulo();
   }, []);
 
   //retorna no console a chamada de search
@@ -113,9 +126,8 @@ export function Curso() {
             {listaCursos.map((tipoCurso) => {
               return (
                 //{'/Aula/' + idVideo}
-                console.log(tipoCurso.imagem),
+               // console.log(tipoCurso.imagem),
                 (
-                  // <Link style={{ textDecoration: 'none' }} to={'/Aula/' + idVideo} >
                   <Link
                     style={{ textDecoration: "none" }}
                     to={`/aula/${tipoCurso.idCurso}`}
@@ -138,7 +150,7 @@ export function Curso() {
         </div>
       </section>
       {/* seção dos cursos  2*/}
-      <section className="areaKey ">
+      {/* <section className="areaKey ">
         <div className="content">
           <div className="tArea">
             <h3>Missões Diversas</h3>
@@ -154,14 +166,13 @@ export function Curso() {
                   textC={tipoCurso.descricao}
                   iconH={<AiOutlineClockCircle />}
                   time={tipoCurso.horas + "h"}
-                  // iconH={<AiOutlineClockCircle />}
                   onChange={(e) => setListaCursos(e.target.value)}
                 />
               );
             })}
           </div>
         </div>
-      </section>
+      </section> */}
       <div className="adress">
         <p>Todos os direitos reservados © Avanade Learning 2021</p>
       </div>
