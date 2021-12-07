@@ -12,9 +12,12 @@ import { TableSeen } from "../../components/Common/TableSeen";
 import { Header } from "../../components/Navigation/Header";
 import ReactDOM from "react-dom";
 
-export function Aula() {
+export function Aula(props) {
   const history = useHistory();
+  const { idCurso } = useParams();
   const { idAula } = useParams();
+  const { nome } = useParams();
+  const [aula, setAula] = useState([])
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [lessonLink, setLessonLink] = useState("");
@@ -23,12 +26,11 @@ export function Aula() {
   const [description, setVideoDescription] = useState("");
   const [lessonInfo, setLessonInfo] = useState({});
   
-
   useEffect(() => {
-    GetLessonInfo(idAula);
-  }, [idAula]);
+    BuscarModulo()
+  }, [])
 
-  const LoadPage = async (id) => {
+  const LoadPage = async   (id) => {
     try {
       await GetLessonInfo(id);
     } catch (error) {
@@ -36,12 +38,28 @@ export function Aula() {
     }
   };
 
+
+  const buscarAulaModulo = async (idModulo) => {
+    const resposta = await api.get(`AulaModulos/modulo/${idModulo}`)
+ 
+    setAula(resposta.data.idAulaNavigation)
+    GetLessonInfo(resposta.data.idAula)
+    console.log(resposta.data.idAula)
+  }
+
+  const BuscarModulo = async () => {
+    const resposta = await api.get(`/modulos/modulo/${idCurso}`)
+
+    await buscarAulaModulo(resposta.data.idModulo) 
+  }
+
   const GetLessonInfo = async (id) => {
     try {
       const { data, status } = await api.get(`/aulas/${id}`);
       if (status === 200) {
         setLessonInfo(data);
         setLessonLink("https://www.youtube.com/embed/" + data.video + "?rel=0");
+        console.log('link'+lessonLink)
       }
     } catch (error) {
       loadDataError();
@@ -80,13 +98,13 @@ export function Aula() {
             <div className="videoInfoArea">
               {/* <Link to={`/ad/${ad.idAnuncio}`}> */}
 
-              <Title>C# - Programação Orientada ao Objeto</Title>
-              <h2>Descrição</h2>
+              <Title>{nome}</Title>
+              <h2>{props.idCurso}</h2>
               <div className="hrContentArea">
                 <hr className="lightHr"></hr>
                 <hr className="whiteHr"></hr>
               </div>
-              <Description>{lessonInfo.descricao}</Description>
+              <Description>{aula.descricao}</Description>
             </div>
           </div>
         </div>

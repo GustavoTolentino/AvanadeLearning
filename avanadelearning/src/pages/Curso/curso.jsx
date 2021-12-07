@@ -24,13 +24,13 @@ import { Header } from "../../components/Navigation/Header";
 export function Curso() {
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);
-  const [categoria, setCategoria] = useState([]);
   const [search, setSearch] = useState("");
+  const [categoria, setCategoria] = useState([]);
   const [idVideo, setVideo] = useState("");
   const [loading, setIsLoading] = useState("");
-  const [modulo, setModulo] = useState("");
+  const [modulo, setModulo] = useState([]);
+  const [aulaModulo, setAulaModulo] = useState([]);
 
-  const [aulaModulo, setAulaModulo] = useState("");
 
   //faz a chamada para a  Listagem de todos os cursos existentes
   async function getCursos() {
@@ -40,6 +40,22 @@ export function Curso() {
       console.log(data);
     }
   }
+
+  // async function getModulos() {
+  //   const { data, status } = await api.get("/Modulos");
+  //   if (status == 200) {
+  //     setModulo(data);
+  //     console.log(data);
+  //   }
+  // }
+
+  // async function getAulaModulo() {
+  //   const { data, status } = await api.get("/AulaModulos");
+  //   if (status == 200) {
+  //     setAulaModulo(data);
+  //     console.log(data);
+  //   }
+  // }
 
   // async function getModulos(id) {
   //   const { data, status} = await api.get(`/modulo/${id}`);
@@ -56,6 +72,7 @@ export function Curso() {
   //     console.log(data);
   //   }
   // }
+
   // buscando aulas atraves do seu id
   async function buscarPorId(id) {
     try {
@@ -71,6 +88,15 @@ export function Curso() {
       setIsLoading();
     }
   }
+
+
+  // renderiza a lista de cursos 
+  useEffect(() => {
+    getCursos();
+    //buscarPorId(idVideo);
+    // getModulos();
+    // getAulaModulo();
+  }, []);
 
   // filtro de busca
   const Buscar = (busca) => {
@@ -88,14 +114,6 @@ export function Curso() {
     });
     setListaCursos(filtro);
   };
-
-  // renderiza a lista de cursos 
-  useEffect(() => {
-    getCursos();
-    buscarPorId(idVideo);
-    // getModulos();
-    // getAulaModulo();
-  }, []);
 
   //retorna no console a chamada de search
   console.log(search);
@@ -122,19 +140,18 @@ export function Curso() {
           <div className="tArea">
             <h3>Missões de Tecnologia</h3>
           </div>
-          <div className="card">
+          <div className="card" style={{justifyContent: listaCursos.length < 3 && 'flex-start'}}>
             {listaCursos.map((tipoCurso) => {
               return (
-                //{'/Aula/' + idVideo}
-               // console.log(tipoCurso.imagem),
+                // console.log(tipoCurso.imagem),
                 (
                   <Link
                     style={{ textDecoration: "none" }}
-                    to={`/aula/${tipoCurso.idCurso}`}
+                    to={`/aula/${tipoCurso.idCurso}/${tipoCurso.nome}`}
                   >
                     <Card
                       key={tipoCurso.idCurso}
-                      id={tipoCurso.idCurso}
+                      idCurso={tipoCurso.idCurso}
                       nome={tipoCurso.nome}
                       icon={tipoCurso.imagem}
                       textC={tipoCurso.descricao}
@@ -173,6 +190,7 @@ export function Curso() {
           </div>
         </div>
       </section> */}
+
       <div className="adress">
         <p>Todos os direitos reservados © Avanade Learning 2021</p>
       </div>
