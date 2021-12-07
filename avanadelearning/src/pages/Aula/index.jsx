@@ -22,7 +22,6 @@ export function Aula() {
   const [videoID, setVideoID] = useState("");
   const [description, setVideoDescription] = useState("");
   const [lessonInfo, setLessonInfo] = useState({});
-  
 
   useEffect(() => {
     GetLessonInfo(idAula);
@@ -60,6 +59,7 @@ export function Aula() {
     });
   };
 
+  
   return (
     <div>
       <Header></Header>
@@ -80,7 +80,7 @@ export function Aula() {
             <div className="videoInfoArea">
               {/* <Link to={`/ad/${ad.idAnuncio}`}> */}
 
-              <Title>C# - Programação Orientada ao Objeto</Title>
+              <Title>{lessonInfo.titulo}</Title>
               <h2>Descrição</h2>
               <div className="hrContentArea">
                 <hr className="lightHr"></hr>
