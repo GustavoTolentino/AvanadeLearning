@@ -16,7 +16,7 @@ export function Header() {
   }
 
   console.log(userInfo.imagem);
-  console.log(`https://localhost:5001/api/Arquivos/images/${userInfo.imagem}`);
+  console.log(`http://52.1.167.147/api/Arquivos/images/${userInfo.imagem}`);
 
   return (
     <HeaderWrapper>
@@ -74,7 +74,7 @@ export function Header() {
                   </span>
                   <Link to="/perfil">
                     <Avatar
-                      photo={`https://localhost:5001/api/Arquivos/images/${userInfo.imagem}`}
+                      photo={`http://52.1.167.147/api/Arquivos/images/${userInfo.imagem}`}
                     />
                   </Link>
                   <Button
