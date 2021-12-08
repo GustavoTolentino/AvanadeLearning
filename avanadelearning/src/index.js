@@ -7,6 +7,7 @@ import { Curso } from "./pages/Curso/curso";
 import { Instituicao } from "./pages/Forms/Instituicao";
 import { Aula } from "./pages/Aula";
 import { CadastrarCurso } from "./pages/Forms/Curso";
+import { Perfil } from "./pages/Perfil";
 import "./index.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -19,6 +20,7 @@ export const routing = (
       {/* <Route path="/cadastrarCurso" component={CadastrarCurso} /> */}
       <Route path="/instituicao" component={Instituicao} />
       <Route path="/aula/:idCurso/:nome" component={Aula} />
+      <Route path="/Perfil" component={Perfil} />
       <Route path="*" component={Home} />
     </Switch>
   </Router>
