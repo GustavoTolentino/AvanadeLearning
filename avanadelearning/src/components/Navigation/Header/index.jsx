@@ -15,12 +15,17 @@ export function Header() {
     history.push("/");
   }
 
+  console.log(userInfo.imagem);
+  console.log(`https://localhost:5001/api/Arquivos/images/${userInfo.imagem}`);
+
   return (
     <HeaderWrapper>
       <div className="contentAreaHeader">
         <div className="firstBlock">
           <div className="divLogo">
-            <img src={logo}></img>
+            <Link to="/">
+              <img src={logo}></img>
+            </Link>
           </div>
           <div
             style={{
@@ -30,10 +35,13 @@ export function Header() {
               gap: "40px",
             }}
           >
-            <Link to="/">Home</Link>
-            <Link to="/curso">Cursos</Link>
+            {userLoggedIn && (
+              <>
+                <Link to="/">Home</Link>
+                <Link to="/curso">Cursos</Link>
+              </>
+            )}
           </div>
-
           <div
             style={{
               display: "flex",
@@ -46,9 +54,6 @@ export function Header() {
             {userLoggedIn ? (
               <>
                 {/* <Link to="/">Inicio</Link> */}
-                <Button ghost onClick={handleSignout}>
-                  Sair
-                </Button>
                 <div
                   className="header-avatar"
                   style={{
@@ -62,20 +67,46 @@ export function Header() {
                       display: "flex",
                       alignItems: "center",
                       wordBreak: "keep-all",
-                      width: "240px",
+                      width: "auto",
                     }}
                   >
-                    Bem-vindo, {userInfo.nome}!
+                    Bem-vindo, {userInfo.nome.split(" ")[0]}!
                   </span>
                   <Link to="/perfil">
                     <Avatar
-                      photo={`https://localhost:5001/api/resources/images/${userInfo.imagem}`}
+                      photo={`https://localhost:5001/api/Arquivos/images/${userInfo.imagem}`}
                     />
                   </Link>
+                  <Button
+                    ghost
+                    onClick={handleSignout}
+                    style={{ width: "auto" }}
+                  >
+                    Sair
+                  </Button>
                 </div>
               </>
             ) : (
               <>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    wordBreak: "keep-all",
+                    width: "auto",
+                    visibility: "hidden",
+                  }}
+                >
+                  Bem-vindo,!
+                </span>
+                <Link to="/perfil" style={{ visibility: "hidden" }}>
+                  <Avatar
+                    photo={`https://localhost:5001/api/Arquivos/images/${
+                      userInfo.imagem.split(".")[0] + ".svg"
+                    }`}
+                  />
+                </Link>
+
                 <Button onClick={() => history.push("/login")} ghost>
                   Entrar
                 </Button>

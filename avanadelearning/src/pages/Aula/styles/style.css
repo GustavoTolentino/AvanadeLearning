@@ -8,14 +8,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 700px;
 }
 .lessonArea {
   display: flex;
   margin-top: 50px;
 }
 .videoInfoArea {
-  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
   color: #ffffff;
   word-break: break-word;
 }

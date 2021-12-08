@@ -25,7 +25,11 @@ export function Aula(props) {
   const [videoID, setVideoID] = useState("");
   const [description, setVideoDescription] = useState("");
   const [lessonInfo, setLessonInfo] = useState({});
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 2ab94a4654c80969b24affe862579ff9c33ac0a7
   useEffect(() => {
     BuscarModulo()
   }, [])
@@ -78,6 +82,7 @@ export function Aula(props) {
     });
   };
 
+  
   return (
     <div>
       <Header></Header>
@@ -98,8 +103,13 @@ export function Aula(props) {
             <div className="videoInfoArea">
               {/* <Link to={`/ad/${ad.idAnuncio}`}> */}
 
+<<<<<<< HEAD
               <Title>{nome}</Title>
               <h2>{props.idCurso}</h2>
+=======
+              <Title>{lessonInfo.titulo}</Title>
+              <h2>Descrição</h2>
+>>>>>>> 2ab94a4654c80969b24affe862579ff9c33ac0a7
               <div className="hrContentArea">
                 <hr className="lightHr"></hr>
                 <hr className="whiteHr"></hr>
