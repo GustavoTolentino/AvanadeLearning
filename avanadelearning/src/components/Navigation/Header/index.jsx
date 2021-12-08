@@ -100,11 +100,7 @@ export function Header() {
                   Bem-vindo,!
                 </span>
                 <Link to="/perfil" style={{ visibility: "hidden" }}>
-                  <Avatar
-                    photo={`https://localhost:5001/api/Arquivos/images/${
-                      userInfo.imagem.split(".")[0] + ".svg"
-                    }`}
-                  />
+                  <Avatar />
                 </Link>
 
                 <Button onClick={() => history.push("/login")} ghost>
