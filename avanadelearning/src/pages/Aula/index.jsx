@@ -96,7 +96,7 @@ export function Aula(props) {
             </div>
             <div className="videoInfoArea">
               {/* <Link to={`/ad/${ad.idAnuncio}`}> */}
-              <Title>{nome}</Title>
+              {/* <Title>{nome}</Title> */}
               <h2>{props.idCurso}</h2>
 
               <Title>{lessonInfo.titulo}</Title>

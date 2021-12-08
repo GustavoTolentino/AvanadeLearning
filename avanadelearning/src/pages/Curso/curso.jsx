@@ -3,14 +3,6 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { api } from "../../services/api";
 import "../Curso/style/curso.css";
-
-// import icon from "../../assets/img/React-icon.svg";
-// import clock from "../../assets/img/clock.png";
-// import iconManicure from "../../assets/img/manicure.svg";
-// import iconCss1 from "../../assets/img/css.svg";
-// import iconCss2 from "../../assets/img/css.svg";
-// import iconI from "../../assets/img/search.svg";
-
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { Card } from "../../components/Common/Card";
@@ -25,11 +17,18 @@ export function Curso() {
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);
   const [search, setSearch] = useState("");
-  const [categoria, setCategoria] = useState([]);
+  const [categorias, setCategoria] = useState([]);
   const [idVideo, setVideo] = useState("");
-  const [loading, setIsLoading] = useState("");
-  const [modulo, setModulo] = useState([]);
-  const [aulaModulo, setAulaModulo] = useState([]);
+  const [loading, setIsLoading] = useState(false);
+
+
+  // async function categoriasCursos() {
+  //   setIsLoading(true);
+  //   const resposta = await api.get(`CategoriasCursos/${listaCursos}`)
+  //   setCategoria(resposta.data.idCursoNavigation);
+  //   getCursos(resposta.data.idCurso);
+  //   console.log(resposta.data.idCurso);
+  // }
 
 
   //faz a chamada para a  Listagem de todos os cursos existentes
@@ -38,64 +37,31 @@ export function Curso() {
     if (status == 200) {
       setListaCursos(data);
       console.log(data);
+      // categoriasCursos(data);
     }
   }
 
-  // async function getModulos() {
-  //   const { data, status } = await api.get("/Modulos");
-  //   if (status == 200) {
-  //     setModulo(data);
-  //     console.log(data);
-  //   }
-  // }
-
-  // async function getAulaModulo() {
-  //   const { data, status } = await api.get("/AulaModulos");
-  //   if (status == 200) {
-  //     setAulaModulo(data);
-  //     console.log(data);
-  //   }
-  // }
-
-  // async function getModulos(id) {
-  //   const { data, status} = await api.get(`/modulo/${id}`);
-  //   if (status == 200) {
-  //     setModulo(data);
-  //     console.log(data);
-  //   }
-  // }
-
-  // async function getAulaModulo(id) {
-  //   const { data, status } = await api.get(`/aulaModulo/${id}`);
-  //   if (status == 200) {
-  //     setAulaModulo(data);
-  //     console.log(data);
-  //   }
-  // }
 
   // buscando aulas atraves do seu id
-  async function buscarPorId(id) {
-    try {
-      setIsLoading(true);
-      // const {data , status} = await api.get(`/aulas/${id}`);
-      const { data, status } = await api.get(`/aula/${id}`);
-      if (status == 200) {
-        setVideo(data);
-        // setAula("https:localhost:5000/" + data.idVideo);
-        console.log(data);
-      }
-    } catch (error) {
-      setIsLoading();
-    }
-  }
+  // async function buscarPorId(id) {
+  //   try {
+  //     setIsLoading(true);
+  //     // const {data , status} = await api.get(`/aulas/${id}`);
+  //     const { data, status } = await api.get(`/aula/${id}`);
+  //     if (status == 200) {
+  //       setVideo(data);
+  //       // setAula("https:localhost:5000/" + data.idVideo);
+  //       console.log(data);
+  //     }
+  //   } catch (error) {
+  //     setIsLoading();
+  //   }
+  // }
 
 
   // renderiza a lista de cursos 
   useEffect(() => {
     getCursos();
-    //buscarPorId(idVideo);
-    // getModulos();
-    // getAulaModulo();
   }, []);
 
   // filtro de busca
@@ -138,9 +104,10 @@ export function Curso() {
       <section className="areaKey">
         <div className="content">
           <div className="tArea">
-            <h3>Missões de Tecnologia</h3>
+            {/* <h3>Missões de Tecnologia</h3> */}
+            <h3>Missões</h3>
           </div>
-          <div className="card" style={{justifyContent: listaCursos.length < 3 && 'flex-start'}}>
+          <div className="card" style={{justifyContent: listaCursos.length <  8 && 'flex-start'  }}>
             {listaCursos.map((tipoCurso) => {
               return (
                 // console.log(tipoCurso.imagem),
@@ -149,7 +116,8 @@ export function Curso() {
                     style={{ textDecoration: "none" }}
                     to={`/aula/${tipoCurso.idCurso}/${tipoCurso.nome}`}
                   >
-                    <Card
+                    <Card 
+                      
                       key={tipoCurso.idCurso}
                       idCurso={tipoCurso.idCurso}
                       nome={tipoCurso.nome}
