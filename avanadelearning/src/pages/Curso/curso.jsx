@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { api } from "../../services/api";
 import "../Curso/style/curso.css";
@@ -17,30 +16,32 @@ export function Curso() {
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);
   const [search, setSearch] = useState("");
-  const [categorias, setCategoria] = useState([]);
+  const [listaCategoria, setCategoria] = useState([]);
+  const [listaCategorias, setCategorias] = useState([]);
   const [idVideo, setVideo] = useState("");
   const [loading, setIsLoading] = useState(false);
-
-
-  // async function categoriasCursos() {
-  //   setIsLoading(true);
-  //   const resposta = await api.get(`CategoriasCursos/${listaCursos}`)
-  //   setCategoria(resposta.data.idCursoNavigation);
-  //   getCursos(resposta.data.idCurso);
-  //   console.log(resposta.data.idCurso);
-  // }
-
-
+  
   //faz a chamada para a  Listagem de todos os cursos existentes
   async function getCursos() {
     const { data, status } = await api.get("/Cursos");
     if (status == 200) {
       setListaCursos(data);
       console.log(data);
-      // categoriasCursos(data);
+      
     }
   }
+  
+  // const gCategoria = (categoria) => {
+  //   setCategoria(categoria);
+  //   const  {data, status }  = await api.get("/CategoriasCursos");
+  //   if (categoria  == 200) {
+  //     getCursos();
+  //     return listaCategorias;
 
+      
+      
+  //   }
+  // }
 
   // buscando aulas atraves do seu id
   // async function buscarPorId(id) {
@@ -64,7 +65,8 @@ export function Curso() {
     getCursos();
   }, []);
 
-  // filtro de busca
+
+  // filtro de busca para os cursos
   const Buscar = (busca) => {
     setSearch(busca);
     const filtro = listaCursos.filter((e) => {
@@ -107,7 +109,7 @@ export function Curso() {
             {/* <h3>Missões de Tecnologia</h3> */}
             <h3>Missões</h3>
           </div>
-          <div className="card" style={{justifyContent: listaCursos.length <  8 && 'flex-start'  }}>
+          <div className="card" style={{justifyContent: listaCursos.length <  8 && 'flex-start' }}>
             {listaCursos.map((tipoCurso) => {
               return (
                 // console.log(tipoCurso.imagem),
@@ -116,8 +118,7 @@ export function Curso() {
                     style={{ textDecoration: "none" }}
                     to={`/aula/${tipoCurso.idCurso}/${tipoCurso.nome}`}
                   >
-                    <Card 
-                      
+                    <Card  
                       key={tipoCurso.idCurso}
                       idCurso={tipoCurso.idCurso}
                       nome={tipoCurso.nome}

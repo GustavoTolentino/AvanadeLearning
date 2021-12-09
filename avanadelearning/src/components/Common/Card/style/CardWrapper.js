@@ -10,7 +10,9 @@ export const CardWrapper = styled.div`
     height: 90px;
     background-color: #121214;
     margin-top: 0.9em;
-    
+    margin-left: 1em;
+    cursor: pointer;
+    position: relative;
     
     .iconC{
         widht :60px;
@@ -32,6 +34,10 @@ export const CardWrapper = styled.div`
       max-widht: 10px;
     }
 
+    .iText p{
+      color: #808080;
+    }
+
     .iText{
       widht: 30px;
       heigt:30px;
@@ -40,9 +46,10 @@ export const CardWrapper = styled.div`
       
     }
     svg{
-      widht: 1em;
+      widht: 1px ;
      color: #808080;
-     margin-bottom: 2.1em ;
+     // margin-bottom: 1.8em ;
+     margin-bottom: 2em;
     }
 
     .tIcon{
@@ -76,7 +83,7 @@ export const CardWrapper = styled.div`
     border: solid 2px #FB5700;
 
     svg {
-      color: #FB5700;
+      color: #a8a8b3;
     }
   }
  
