@@ -24,7 +24,6 @@ export function Perfil(){
   const [nomeRedirecinar, setNomeRedirecinar] = useState("");
 
   useEffect(() => {
-    console.log(parseJwt().jti);
     getUser(parseJwt().jti);
     getConq(parseJwt().jti);
     getEstado(parseJwt().jti);
@@ -44,7 +43,6 @@ export function Perfil(){
       if( !(data.empresa == "Empresa não informada" || data.empresa == null) && !(data.cargo == "Cargo não informado" || data.cargo == null)){
         await setDadosUserEmpresaCargo(data.empresa + "|" + data.cargo);
       }
-
         console.log(data);
         console.log("A listagem do usuário funcionou");
       }
@@ -53,10 +51,10 @@ export function Perfil(){
   async function getConq(id)
   {
     const { data, status } = await api.get(`/ConquistasUsuario/${id}`);
-    // console.log("Entrou no método de Get");
+    console.log(data);
+    console.log(status);
     if (status === 200) {
       setDadosConquista(data);
-      console.log(data);
       console.log("A listagem das conquistas funcionou");
     }
   }
@@ -131,6 +129,7 @@ export function Perfil(){
       draggable: true,
       progress: undefined,
     });
+    
   return (
     <div className="area">
             <div>
