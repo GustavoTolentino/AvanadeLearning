@@ -24,9 +24,10 @@ export function Perfil(){
   const [nomeRedirecinar, setNomeRedirecinar] = useState("");
 
   useEffect(() => {
-    getUser(parseJwt.IdUsuario);
-    //getConq(8);
-    getEstado(15);
+    console.log(parseJwt().jti);
+    getUser(parseJwt().jti);
+    getConq(parseJwt().jti);
+    getEstado(parseJwt().jti);
   }, []);
 
   async function getUser(id)
@@ -35,9 +36,9 @@ export function Perfil(){
     // console.log("Entrou no método de Get");
     if (status === 200) {
       await setDadosUserImg(
-        "https://localhost:5001/api/Arquivos/images/" + data.imagem);
+        "http://52.1.167.147/api/Arquivos/images/" + data.imagem);
       await setDadosUserImgBackground(
-        "https://localhost:5001/api/Arquivos/images/" + data.imagemBackground);
+        "http://52.1.167.147/api/Arquivos/images/" + data.imagemBackground);
       await setDadosUserNome(data.nome);
       await setDadosUserSobre(data.sobreMim);
       if( !(data.empresa == "Empresa não informada" || data.empresa == null) && !(data.cargo == "Cargo não informado" || data.cargo == null)){
@@ -49,16 +50,16 @@ export function Perfil(){
       }
   }
 
-  // async function getConq(id)
-  // {
-  //   const { data, status } = await api.get(`/ConquistasUsuario/${id}`);
-  //   // console.log("Entrou no método de Get");
-  //   if (status === 200) {
-  //     setDadosConquista(data);
-  //     console.log(data);
-  //     console.log("A listagem das conquistas funcionou");
-  //   }
-  // }
+  async function getConq(id)
+  {
+    const { data, status } = await api.get(`/ConquistasUsuario/${id}`);
+    // console.log("Entrou no método de Get");
+    if (status === 200) {
+      setDadosConquista(data);
+      console.log(data);
+      console.log("A listagem das conquistas funcionou");
+    }
+  }
 
   async function getEstado(id)
   {
@@ -154,8 +155,14 @@ export function Perfil(){
                     <p className="tituloConquista">Conquista</p>
                     <a className="verMais" onClick={redirectConq}>Ver Mais	&gt;</a>
                   </div>
-                  <div>
-
+                  <div className="conq">
+                    {
+                      dadosConquista.map((itensConq) =>{
+                        return(
+                          <img className="imgConq" src={itensConq.idConquistaNavigation.imagem} alt="imagem da conquista"/>
+                        )
+                      })
+                    }
                   </div>
                 </section>
               </div>
