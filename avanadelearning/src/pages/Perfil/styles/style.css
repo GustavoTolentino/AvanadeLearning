@@ -1,123 +1,122 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.area{
-    width: 100%;
-    height: 100%;
-    background-color: #000000;
-
+.area {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
 }
 
-.areaImgBackground{
-    width: 100%;
-    height: 160px;
+.areaImgBackground {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
 }
 
-.areaConteudo{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    position: relative;
-    bottom: 100px;
+.areaConteudo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  bottom: 100px;
 }
 
-.areaConteudoUsuario{
-    width: 374px;
-    height: auto;
-    background-color: #292828;
+.areaConteudoUsuario {
+  width: 374px;
+  height: auto;
+  background-color: #292828;
 }
 
-.dadosUser{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.dadosUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.posicaoBotao{
-    display: flex;
-    justify-content: flex-end;
+.posicaoBotao {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.botaoEditar{
-    width: 24px;
-    padding: 20px;
+.botaoEditar {
+  width: 24px;
+  padding: 20px;
 }
 
-.imgPerfil{
-    width: 188px;
-    height: 191px;
-    border-radius: 50%;
-    border: solid;
-    box-sizing: 2px;
-    border-color: #fff;
+.imgPerfil {
+  width: 188px;
+  height: 191px;
+  border-radius: 50%;
+  border: solid;
+  box-sizing: 2px;
+  border-color: #fff;
 }
 
-.nome{
-    font-size: 24px;
+.nome {
+  font-size: 24px;
 }
 
-.cargo{
-    font-size: 16px;
+.cargo {
+  font-size: 16px;
 }
 
-.local{
-    font-size: 14px;
+.local {
+  font-size: 14px;
 }
 
-.conquista{
-    width: 378px;
-    height: 185px;
-    background-color: #292828;
-    display:grid;
-    justify-content: center;
+.conquista {
+  width: 378px;
+  height: 185px;
+  background-color: #292828;
+  display: grid;
+  justify-content: center;
 }
 
-.posicaoConquista{
-    display: flex;
-    justify-content: space-around;
-    padding-top: 20px;
+.posicaoConquista {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
 }
 
-.tituloConquista{
-    font-size: 24px;
-    font: bolder;
+.tituloConquista {
+  font-size: 24px;
+  font: bolder;
 }
 
-.verMais{
-    font-size: 18px;
-    font: bolder;
-    color: #FB5700;
-    padding-top: 8px;
+.verMais {
+  font-size: 18px;
+  font: bolder;
+  color: #fb5700;
+  padding-top: 8px;
 }
 
-.conq{
-    width: 325px;
-    height: 95px;
+.conq {
+  width: 325px;
+  height: 95px;
 }
 
-.imgConq{
-    width: 50px;
-    height: 50px;
-    padding-left: 10px;
+.imgConq {
+  width: 50px;
+  height: 50px;
+  padding-left: 10px;
 }
 
-.sobre{
-    width: 800px;
-    height: 300px;
-    background-color: #292828;
+.sobre {
+  width: 800px;
+  height: 300px;
+  background-color: #292828;
 }
 
-.tituloSobre{
-    font-size: 24px;
-    font: bolder;
-    margin-left: 35px;
+.tituloSobre {
+  font-size: 24px;
+  font: bolder;
+  margin-left: 35px;
 }
 
-.textoSobre{
-    margin-left: 35px;
-    font-size: 20px;
+.textoSobre {
+  margin-left: 35px;
+  font-size: 20px;
 }
-
