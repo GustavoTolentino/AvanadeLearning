@@ -3,19 +3,19 @@
   padding: 0;
 }
 
-.area {
+.area{
   width: 100%;
   height: 100%;
   background-color: #000000;
+
 }
 
-.areaImgBackground {
+.areaImgBackground{
   width: 100%;
   height: 160px;
-  object-fit: cover;
 }
 
-.areaConteudo {
+.areaConteudo{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -23,30 +23,30 @@
   bottom: 100px;
 }
 
-.areaConteudoUsuario {
+.areaConteudoUsuario{
   width: 374px;
   height: auto;
   background-color: #292828;
 }
 
-.dadosUser {
+.dadosUser{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.posicaoBotao {
+.posicaoBotao{
   display: flex;
   justify-content: flex-end;
 }
 
-.botaoEditar {
+.botaoEditar{
   width: 24px;
   padding: 20px;
 }
 
-.imgPerfil {
+.imgPerfil{
   width: 188px;
   height: 191px;
   border-radius: 50%;
@@ -55,68 +55,68 @@
   border-color: #fff;
 }
 
-.nome {
+.nome{
   font-size: 24px;
 }
 
-.cargo {
+.cargo{
   font-size: 16px;
 }
 
-.local {
+.local{
   font-size: 14px;
 }
 
-.conquista {
+.conquista{
   width: 378px;
   height: 185px;
   background-color: #292828;
-  display: grid;
+  display:grid;
   justify-content: center;
 }
 
-.posicaoConquista {
+.posicaoConquista{
   display: flex;
   justify-content: space-around;
   padding-top: 20px;
 }
 
-.tituloConquista {
+.tituloConquista{
   font-size: 24px;
   font: bolder;
 }
 
-.verMais {
+.verMais{
   font-size: 18px;
   font: bolder;
-  color: #fb5700;
+  color: #FB5700;
   padding-top: 8px;
 }
 
-.conq {
+.conq{
   width: 325px;
   height: 95px;
 }
 
-.imgConq {
+.imgConq{
   width: 50px;
   height: 50px;
   padding-left: 10px;
 }
 
-.sobre {
+.sobre{
   width: 800px;
   height: 300px;
   background-color: #292828;
 }
 
-.tituloSobre {
+.tituloSobre{
   font-size: 24px;
   font: bolder;
   margin-left: 35px;
 }
 
-.textoSobre {
+.textoSobre{
   margin-left: 35px;
   font-size: 20px;
 }

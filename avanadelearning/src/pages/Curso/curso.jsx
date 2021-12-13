@@ -30,35 +30,6 @@ export function Curso() {
       
     }
   }
-  
-  // const gCategoria = (categoria) => {
-  //   setCategoria(categoria);
-  //   const  {data, status }  = await api.get("/CategoriasCursos");
-  //   if (categoria  == 200) {
-  //     getCursos();
-  //     return listaCategorias;
-
-      
-      
-  //   }
-  // }
-
-  // buscando aulas atraves do seu id
-  // async function buscarPorId(id) {
-  //   try {
-  //     setIsLoading(true);
-  //     // const {data , status} = await api.get(`/aulas/${id}`);
-  //     const { data, status } = await api.get(`/aula/${id}`);
-  //     if (status == 200) {
-  //       setVideo(data);
-  //       // setAula("https:localhost:5000/" + data.idVideo);
-  //       console.log(data);
-  //     }
-  //   } catch (error) {
-  //     setIsLoading();
-  //   }
-  // }
-
 
   // renderiza a lista de cursos 
   useEffect(() => {
@@ -112,12 +83,14 @@ export function Curso() {
           <div className="card" style={{justifyContent: listaCursos.length <  8 && 'flex-start' }}>
             {listaCursos.map((tipoCurso) => {
               return (
-                // console.log(tipoCurso.imagem),
+                
+                // Redirecionamento para a pagina de aulas 
                 (
                   <Link
                     style={{ textDecoration: "none" }}
                     to={`/aula/${tipoCurso.idCurso}/${tipoCurso.nome}`}
                   >
+                    {/* Cursos listados existentes */}
                     <Card  
                       key={tipoCurso.idCurso}
                       idCurso={tipoCurso.idCurso}

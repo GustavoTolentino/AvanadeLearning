@@ -3,11 +3,11 @@ import "./styles/style.css";
 import { useHistory } from "react-router-dom";
 import { api } from "../../services/api";
 import lapis from "../../assets/img/Lapis.svg";
-import foto from "../../assets/img/profCaique.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { parseJwt } from "../../services/auth";
 import { Header } from "../../components/Navigation/Header";
+import { Imagem } from "./imagem";
 
 export function Perfil() {
   const history = useHistory();
@@ -18,15 +18,15 @@ export function Perfil() {
   const [dadosUserSobre, setDadosUserSobre] = useState("");
   const [dadosEstado, setDadosEstado] = useState("");
   const [dadosPais, setDadosPais] = useState("");
-
-  const [dadosConquista, setDadosConquista] = useState([]);
-  const [dadosRedeSocial, setDadosRedeSocial] = useState([]);
+  const [dadosConquista, setDadosConquista] = useState("");
+  const [dadosRede, setDadosRede] = useState([]);
   const [nomeRedirecinar, setNomeRedirecinar] = useState("");
 
   useEffect(() => {
     getUser(parseJwt().jti);
     getConq(parseJwt().jti);
     getEstado(parseJwt().jti);
+    getRedeUser(parseJwt().jti);
   }, []);
 
   async function getUser(id) {
@@ -45,7 +45,7 @@ export function Perfil() {
         !(data.empresa == "Empresa não informada" || data.empresa == null) &&
         !(data.cargo == "Cargo não informado" || data.cargo == null)
       ) {
-        await setDadosUserEmpresaCargo(data.empresa + " | " + data.cargo);
+        await setDadosUserEmpresaCargo(data.empresa + "|" + data.cargo);
       }
       console.log(data);
       console.log("A listagem do usuário funcionou");
@@ -55,9 +55,8 @@ export function Perfil() {
   async function getConq(id) {
     const { data, status } = await api.get(`/ConquistasUsuario/${id}`);
     console.log(data);
-    console.log(status);
     if (status === 200) {
-      setDadosConquista(data);
+      await setDadosConquista(data.idConquistaNavigation.imagem);
       console.log("A listagem das conquistas funcionou");
     }
   }
@@ -66,7 +65,7 @@ export function Perfil() {
     const { data, status } = await api.get(`/EstadosUsuario/${id}`);
     // console.log("Entrou no método de Get");
     if (status === 200) {
-      await setDadosEstado(data.idEstadoNavigation.nome + ", ");
+      await setDadosEstado(data.idEstadoNavigation.nome + ",");
       await getPais(data.idEstadoNavigation.idPais);
       console.log("A listagem do estado funcionou");
     }
@@ -80,16 +79,15 @@ export function Perfil() {
     }
   }
 
-  // async function getRedeUser(id)
-  // {
-  //   const { data, status } = await api.get(`/RedesUsuarios/${id}`);
-  //   // console.log("Entrou no método de Get");
-  //   if (status === 200) {
-  //     setDadosUsuario(data);
-  //     console.log(data);
-  //     console.log("A listagem do estado funcionou");
-  //   }
-  // }
+  async function getRedeUser(id) {
+    const { data, status } = await api.get(`/RedesUsuarios/${id}`);
+    // console.log("Entrou no método de Get");
+    if (status === 200) {
+      setDadosRede(data);
+      console.log(data);
+      console.log("A listagem de rede social funcionou");
+    }
+  }
 
   const redirectConq = async (e) => {
     history.push("/cadastro");
@@ -130,57 +128,14 @@ export function Perfil() {
     });
 
   return (
-    <div>
+    <div className="area">
       <Header></Header>
-      <div className="area">
+      <div>
+        <img className="areaImgBackground" src={dadosUserImgBackground} />
+      </div>
+      <div className="areaConteudo">
         <div>
-          <img className="areaImgBackground" src={dadosUserImgBackground} />
-        </div>
-        <div className="areaConteudo">
-          <div>
-            <section className="areaConteudoUsuario">
-              <div className="posicaoBotao">
-                <img
-                  className="botaoEditar"
-                  src={lapis}
-                  onClick={redirectConq}
-                  alt="editar"
-                />
-              </div>
-              <div className="dadosUser">
-                <img
-                  className="imgPerfil"
-                  src={dadosUserImg}
-                  alt="imagem de perfil"
-                />
-                <p className="nome">{dadosUserNome}</p>
-                <p className="cargo">{dadosUserEmpresaCargo}</p>
-                <p className="local">
-                  {dadosEstado}
-                  {dadosPais}
-                </p>
-              </div>
-            </section>
-            <br />
-            <section className="conquista">
-              <div className="posicaoConquista">
-                <p className="tituloConquista">Conquista</p>
-                <a className="verMais" onClick={redirectConq}>
-                  Ver Mais &gt;
-                </a>
-              </div>
-              <div className="conq">
-                {/* {
-                      dadosConquista.map((itensConq) =>{
-                        return(
-                          <img className="imgConq" src={itensConq.idConquistaNavigation.imagem} alt="imagem da conquista"/>
-                        )
-                      })
-                    } */}
-              </div>
-            </section>
-          </div>
-          <section className="sobre">
+          <section className="areaConteudoUsuario">
             <div className="posicaoBotao">
               <img
                 className="botaoEditar"
@@ -189,11 +144,47 @@ export function Perfil() {
                 alt="editar"
               />
             </div>
-            <p className="tituloSobre">Sobre mim</p>
-            <p className="textoSobre">{dadosUserSobre}</p>
+            <div className="dadosUser">
+              <img
+                className="imgPerfil"
+                src={dadosUserImg}
+                alt="imagem de perfil"
+              />
+              <p className="nome">{dadosUserNome}</p>
+              <p className="cargo">{dadosUserEmpresaCargo}</p>
+              <p className="local">
+                {dadosEstado}
+                {dadosPais}
+              </p>
+            </div>
+          </section>
+          <br />
+          <section className="conquista">
+            <div className="posicaoConquista">
+              <p className="tituloConquista">Conquista</p>
+              <a className="verMais" onClick={redirectConq}>
+                Ver Mais &gt;
+              </a>
+            </div>
+            <div className="conq">
+              <Imagem imagem={dadosConquista} />
+            </div>
           </section>
         </div>
+        <section className="sobre">
+          <div className="posicaoBotao">
+            <img
+              className="botaoEditar"
+              src={lapis}
+              onClick={redirectConq}
+              alt="editar"
+            />
+          </div>
+          <p className="tituloSobre">Sobre mim</p>
+          <p className="textoSobre">{dadosUserSobre}</p>
+        </section>
       </div>
     </div>
   );
 }
+  

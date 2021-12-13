@@ -17,7 +17,7 @@ export const routing = (
       <Route path="/login" component={Login} />
       <Route path="/cadastro" component={Cadastro} />
       <Route path="/curso" component={Curso} />
-      {/* <Route path="/cadastrarCurso" component={CadastrarCurso} /> */}
+      <Route path="/postCurso" component={CadastrarCurso} />
       <Route path="/instituicao" component={Instituicao} />
       <Route path="/aula/:idCurso/:nome" component={Aula} />
       <Route path="/Perfil" component={Perfil} />
