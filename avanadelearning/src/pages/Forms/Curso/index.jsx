@@ -2,7 +2,7 @@ import "./styles/style.css";
 import { api } from "../../../services/api";
 
 // importando icones do react
-import {  MdClose, MdEdit } from "react-icons/md";
+import { MdClose, MdEdit } from "react-icons/md";
 import { IoImagesOutline } from "react-icons/io5";
 import { MdOutlineDescription } from "react-icons/md";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -10,13 +10,15 @@ import { BsBank2 } from "react-icons/bs";
 
 //https://stock.adobe.com/br/images/id/200844990?as_campaign=Flaticon&as_content=api&as_audience=idp&tduid=c6ebecb0f44c74f81130ec7b58cc9b30&as_channel=affiliate&as_campclass=redirect&as_source=arvato
 
+//insert into aula values ('youtube.com/watch?v=Gq02CTw-Oc8', 'Nesta aula vamos aprender tudo que voce precisa saber sobre administração', 'adm.pdf', 'Administração')
+
 import { useHistory } from "react-router-dom";
 import { FormF } from "../../../components/Forms/FormFive";
-// import { Button } from "../../../components/Common/Button";
-// import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ListSixElements } from "../../../components/Lists/ListSixElements/index";
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export function CadastrarCurso() {
     const history = useHistory();
@@ -26,18 +28,23 @@ export function CadastrarCurso() {
     const [descricao, setDescricao] = useState("");
     const [imagem, setImagem] = useState("");
     const [horas, setHoras] = useState("");
+    const [video, setVideo] = useState("");
     const [listaCurso, setListaCurso] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
+    // redireciona para a tela de cursos
     const redirectBack = async (e) => {
         history.push("/curso");
     };
 
+    //renderiza 
     useEffect(() => {
         getCursos();
     }, []);
 
     //mapeando a lista de cursos
     async function getCursos() {
+
         const { data, status } = await api.get("/Cursos");
         // console.log("Entrou no método de Get");
         if (status === 200) {
@@ -47,11 +54,162 @@ export function CadastrarCurso() {
         }
     }
 
+    // retorna uma string vazia setando todos os dados
+    function limparDados() {
+        setInstituicao("");
+        setName("");
+        setDescricao("");
+        setHoras("");
+        setImagem("");
+    }
+
+    // deletar cursos
+    async function deleteCurse(id) {
+        try {
+            const { status } = await api.delete(`/Cursos/${id}`);
+            if (status === 204) {
+                deleteCurse();
+                getCursos();
+            }
+        } catch (error) {
+            deleteError();
+        }
+    }
+
+
+
     // chamada para o cadastro de cursos
+    const createCurse = async () => {
+        setIsLoading(true);
+        try {
+            const { data, status } = await api.post("/Cursos", {
+                idInstituicao: idInstituicao,
+                nome: nome,
+                descricao: descricao,
+                imagem: imagem,
+                horas: horas,
+            });
+
+            if (status === 201) {
+                localStorage.setItem("userToken", data.token);
+                console.log("O curso foi cadastrado com sucesso!");
+                console.log(data);
+
+                await getCursos();
+
+                //retorna uma popup de sucesso
+                success();
+                limparDados();
+                setIsLoading(false);
+            }
+
+        } catch (error) {
+            // retorna um popup de erro
+            errorPopup();
+        }
+    }
+
+    //atualiza os cursos existentes
+    const updateCurse = async (id) => {
+        setIsLoading(true);
+       
+        try {
+            const { data, status } = await api.put(`/Cursos/${id}`, {
+                idInstituicao: idInstituicao,
+                nome: nome,
+                descricao: descricao,
+                imagem: imagem,
+                horas: horas,
+            });
+
+            if (status === 204) {
+                localStorage.setItem("userToken", data.token);
+                console.log("O curso foi atualizado com sucesso!");
+                console.log(data);
+
+                success();
+            }
+        } catch (error) {
+            updateError();
+        }
+    }
+
+    //#region Popups de aviso
+    const success = () =>
+        toast.success("Seu curso foi cadastrado com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+
+    const errorPopup = () =>
+        toast.error(
+            "Infelizmente houve algum erro no seu cadastro, tente novamente.",
+            {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            }
+        );
+
+    const updateError = () => {
+        toast.error("Infelizmente seu curso não pode ser atualizado!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+
+    const updateSuccess = () => {
+        toast.success("Seu curso foi atualizado com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+
+    const deleteError = () => {
+        toast.error("Infelizmente houve um erro na Exclusão", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
+
+    const deleteSuccess = () => {
+        toast.success("Seu curso foi excluído com sucesso!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
+    //#endregion
 
 
-
-    // renderiza a pagina de cadastrar cursos
     return (
         <div className="curseScreen">
             <div className="contentArea">
@@ -63,67 +221,84 @@ export function CadastrarCurso() {
                     <div className="curseRow">
                         <div classNama="colunmForm">
                             <FormF
-                                title="id da Instituição"
+                                title="Cursos"
+
+
+                                title1="id da Instituição"
                                 type="number"
                                 placeholder="Id Instituição"
                                 state={idInstituicao}
                                 method={(e) => setInstituicao(e.target.value)}
-                                icon={<BsBank2/>}
+                                icon={<BsBank2 />}
 
-                                title="Curso"
+                                title2="Curso"
                                 type2="text"
                                 placeholder2="Curso"
                                 state2={nome}
                                 method2={(e) => setName(e.target.value)}
-                                icon2={<MdOutlineDescription/>}
+                                icon2={<MdOutlineDescription />}
 
 
-                                title="descrição"
+                                title3="descrição"
                                 type3="text"
                                 placeholder3="Descrição"
                                 state3={descricao}
                                 method3={(e) => setDescricao(e.target.value)}
-                                icon3={<MdOutlineDescription/>}
+                                icon3={<MdOutlineDescription />}
 
 
-                                title="imagem"
+                                title4="imagem"
                                 // type4="file"
                                 type4="text"
                                 placeholder4="Imagem"
                                 state4={imagem}
                                 method4={(e) => setImagem(e.target.value)}
-                                icon4={<IoImagesOutline/>}
+                                icon4={<IoImagesOutline />}
 
-                                title="horas"
-                                // type5="time"
+                                title5="horas"
                                 type5="number"
                                 placeholder5="Horas"
                                 state5={horas}
                                 method5={(e) => setHoras(e.target.value)}
-                                icon5={<AiOutlineClockCircle/>}
+                                icon5={<AiOutlineClockCircle />}
 
-                                // onSubmit={createCurse}
-                             >
-                            </FormF> 
+                                onSubmit={createCurse}
+                            >
+                            </FormF>
+
+
+                            <ToastContainer
+                                position="top-right"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                            />
                         </div>
 
                         {/* Tabela da listagem de cursos */}
                         <ListSixElements title="Listagem dos cursos">
                             <tr>
+
                                 <th>Nome</th>
                                 <th>Texto</th>
                                 <th>Vídeo</th>
                                 <th>Imagem</th>
-                                <th>Pontos</th>
+                                {/* <th>Pontos</th> */}
                             </tr>
                             {/* Lista dos cursos existentes */}
                             {listaCurso.map((curso) => (
                                 <tr key={curso.idCurso} classNama="trBody">
-                                    <td>{curso.nome}</td>
+                                    <td>{curso.nome}:</td>
                                     <td>{curso.descricao}</td>
                                     <td>{curso.video}</td>
                                     <td>{curso.imagem}</td>
-                                    <td>{curso.pontos}</td>
+
+                                    {/* <td>{curso.pontos}</td> */}
                                     <td>
                                         <div id="icons">
                                             <MdEdit
@@ -132,28 +307,24 @@ export function CadastrarCurso() {
                                                     setDescricao(curso.descricao);
                                                     setImagem(curso.imagem);
                                                     setHoras(curso.horas);
-                                                    // setVideo(curso.video);
+                                                    setVideo(curso.video);
                                                     // setPontos(curso.pontos);
                                                 }}
                                                 className="icon edit-icon"
-                                            />
-                                            <MdClose
+                                                onClick={() => updateCurse(curso.idCurso)}
 
-                                                className="icon close-icon"
-                                            
                                             />
-                                            {/* <MdClose
-                                                onClick={() => deleteCursos(curso.idCurso)}
+
+                                            <MdClose
+                                                // onClick={() => deleteCursos(curso.idCurso)}
                                                 className="icon close-icon"
-                                            /> */}
+                                            />
                                         </div>
                                     </td>
                                 </tr>
-
                             ))}
                         </ListSixElements>
                     </div>
-
                 </div>
             </div>
         </div>
