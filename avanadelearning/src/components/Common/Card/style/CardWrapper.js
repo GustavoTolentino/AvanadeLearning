@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components';
 export const CardWrapper = styled.div`
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     box-shadow: 4px 4px 4px #121214;
     width: 250px;
     height: 90px;

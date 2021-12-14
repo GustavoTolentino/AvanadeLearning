@@ -17,11 +17,10 @@
 }
 
 .areaT{
-    /* width: 2000px; */
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 250px;
+    height: 154px;
     background-color: #202024;
 }
 
