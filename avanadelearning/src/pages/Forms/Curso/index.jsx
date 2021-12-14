@@ -80,7 +80,7 @@ export function CadastrarCurso() {
 
     // chamada para o cadastro de cursos
     const createCurse = async () => {
-        setIsLoading(true);
+        console.log("entrou no metodo")
         try {
             const { data, status } = await api.post("/Cursos", {
                 idInstituicao: idInstituicao,
@@ -112,7 +112,7 @@ export function CadastrarCurso() {
     //atualiza os cursos existentes
     const updateCurse = async (id) => {
         setIsLoading(true);
-       
+
         try {
             const { data, status } = await api.put(`/Cursos/${id}`, {
                 idInstituicao: idInstituicao,
@@ -130,7 +130,7 @@ export function CadastrarCurso() {
                 success();
             }
         } catch (error) {
-            updateError();
+            updateError(error);
         }
     }
 
@@ -222,8 +222,6 @@ export function CadastrarCurso() {
                         <div classNama="colunmForm">
                             <FormF
                                 title="Cursos"
-
-
                                 title1="id da Instituição"
                                 type="number"
                                 placeholder="Id Instituição"
@@ -238,14 +236,12 @@ export function CadastrarCurso() {
                                 method2={(e) => setName(e.target.value)}
                                 icon2={<MdOutlineDescription />}
 
-
                                 title3="descrição"
                                 type3="text"
                                 placeholder3="Descrição"
                                 state3={descricao}
                                 method3={(e) => setDescricao(e.target.value)}
                                 icon3={<MdOutlineDescription />}
-
 
                                 title4="imagem"
                                 // type4="file"
@@ -282,36 +278,35 @@ export function CadastrarCurso() {
 
                         {/* Tabela da listagem de cursos */}
                         <ListSixElements title="Listagem dos cursos">
-                            <tr>
-
-                                <th>Nome</th>
-                                <th>Texto</th>
-                                <th>Vídeo</th>
+                            <tr >
+                                <th>id da Instituição</th>
+                                <th>Curso</th>
+                                <th>Descriçao</th>
                                 <th>Imagem</th>
-                                {/* <th>Pontos</th> */}
+                                <th>Horas</th>
                             </tr>
                             {/* Lista dos cursos existentes */}
                             {listaCurso.map((curso) => (
-                                <tr key={curso.idCurso} classNama="trBody">
-                                    <td>{curso.nome}:</td>
+                                <tr key={curso.idCurso} className="trBody">
+                                    <td>{curso.idInstituicao}</td>
+                                    <td>{curso.nome}</td>
                                     <td>{curso.descricao}</td>
-                                    <td>{curso.video}</td>
                                     <td>{curso.imagem}</td>
+                                    <td>{curso.horas}</td>
 
                                     {/* <td>{curso.pontos}</td> */}
                                     <td>
                                         <div id="icons">
                                             <MdEdit
                                                 onClick={() => {
+                                                    setInstituicao(curso.idInstituicao);
                                                     setName(curso.nome);
                                                     setDescricao(curso.descricao);
                                                     setImagem(curso.imagem);
                                                     setHoras(curso.horas);
-                                                    setVideo(curso.video);
-                                                    // setPontos(curso.pontos);
                                                 }}
                                                 className="icon edit-icon"
-                                                onClick={() => updateCurse(curso.idCurso)}
+                                                onClick={() => updateCurse(curso.id)}
 
                                             />
 
