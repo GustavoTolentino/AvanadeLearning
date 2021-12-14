@@ -189,13 +189,24 @@ export function Perfil() {
           <p className="tituloSobre">Sobre mim</p>
           <p className="textoSobre">{dadosUserSobre}</p>
           {
+            dadosRede === 1 &&
             nomeRedirecinar !== "" &&
             <a href={nomeRedirecinar}>
               <img
               className="imgRede"
-              
               src={GitHub}
-              alt="editar"
+              alt="GitHub"
+              />
+            </a>
+          }
+          {
+            dadosRede === 3 &&
+            nomeRedirecinar !== "" &&
+            <a href={nomeRedirecinar}>
+              <img
+              className="imgRede"
+              src={LinkedIn}
+              alt="LinkedIn"
               />
             </a>
           }
