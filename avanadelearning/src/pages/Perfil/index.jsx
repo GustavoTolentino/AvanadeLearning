@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { parseJwt } from "../../services/auth";
 import { Header } from "../../components/Navigation/Header";
 import { Imagem } from "./imagem";
+import GitHub from "../../assets/img/GitHub.svg";
+import LinkedIn from "../../assets/img/LinkedIn.svg";
 
 export function Perfil() {
   const history = useHistory();
@@ -19,7 +21,7 @@ export function Perfil() {
   const [dadosEstado, setDadosEstado] = useState("");
   const [dadosPais, setDadosPais] = useState("");
   const [dadosConquista, setDadosConquista] = useState("");
-  const [dadosRede, setDadosRede] = useState([]);
+  const [dadosRede, setDadosRede] = useState("");
   const [nomeRedirecinar, setNomeRedirecinar] = useState("");
 
   useEffect(() => {
@@ -83,8 +85,9 @@ export function Perfil() {
     const { data, status } = await api.get(`/RedesUsuarios/${id}`);
     // console.log("Entrou no método de Get");
     if (status === 200) {
-      setDadosRede(data);
-      console.log(data);
+      setNomeRedirecinar(data.link);
+      setDadosRede(data.idRedeSocial);
+      console.log(data.link);
       console.log("A listagem de rede social funcionou");
     }
   }
@@ -185,6 +188,17 @@ export function Perfil() {
           </div>
           <p className="tituloSobre">Sobre mim</p>
           <p className="textoSobre">{dadosUserSobre}</p>
+          {
+            nomeRedirecinar !== "" &&
+            <a href={nomeRedirecinar}>
+              <img
+              className="imgRede"
+              
+              src={GitHub}
+              alt="editar"
+              />
+            </a>
+          }
         </section>
       </div>
     </div>
