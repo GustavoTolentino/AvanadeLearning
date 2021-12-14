@@ -45,7 +45,7 @@ export function Perfil() {
         !(data.empresa == "Empresa não informada" || data.empresa == null) &&
         !(data.cargo == "Cargo não informado" || data.cargo == null)
       ) {
-        await setDadosUserEmpresaCargo(data.empresa + "|" + data.cargo);
+        await setDadosUserEmpresaCargo(data.empresa + " | " + data.cargo);
       }
       console.log(data);
       console.log("A listagem do usuário funcionou");
@@ -65,7 +65,7 @@ export function Perfil() {
     const { data, status } = await api.get(`/EstadosUsuario/${id}`);
     // console.log("Entrou no método de Get");
     if (status === 200) {
-      await setDadosEstado(data.idEstadoNavigation.nome + ",");
+      await setDadosEstado(data.idEstadoNavigation.nome + ", ");
       await getPais(data.idEstadoNavigation.idPais);
       console.log("A listagem do estado funcionou");
     }
@@ -90,7 +90,7 @@ export function Perfil() {
   }
 
   const redirectConq = async (e) => {
-    history.push("/cadastro");
+    history.push("/");
   };
 
   //   async function updateInstitute(
@@ -167,7 +167,10 @@ export function Perfil() {
               </a>
             </div>
             <div className="conq">
-              <Imagem imagem={dadosConquista} />
+              {
+                dadosConquista !== "" &&
+                <Imagem imagem={dadosConquista} />
+              }
             </div>
           </section>
         </div>
