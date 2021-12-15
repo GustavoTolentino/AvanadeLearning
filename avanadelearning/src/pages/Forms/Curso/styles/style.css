@@ -27,4 +27,10 @@
     color: #fb5700;
 }
 
+.curseReturn a{
+    display: flex;
+        
+    cursor: pointer;
+}
+
 /*  */

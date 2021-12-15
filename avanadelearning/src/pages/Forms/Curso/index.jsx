@@ -79,10 +79,11 @@ export function CadastrarCurso() {
 
 
     // chamada para o cadastro de cursos
-    const createCurse = async () => {
+    const createCurse = async (e) => {
+        e.preventDefault();
         console.log("entrou no metodo")
         try {
-            const { data, status } = await api.post("/Cursos", {
+            const { data, status } = await api.post("/cursos", {
                 idInstituicao: idInstituicao,
                 nome: nome,
                 descricao: descricao,
@@ -100,7 +101,6 @@ export function CadastrarCurso() {
                 //retorna uma popup de sucesso
                 success();
                 limparDados();
-                setIsLoading(false);
             }
 
         } catch (error) {
@@ -215,7 +215,7 @@ export function CadastrarCurso() {
             <div className="contentArea">
                 <div className="displayColumn">
                     <div className="curseReturn">
-                        <a onClick={redirectBack}>Voltar</a>
+                        <a onClick ={redirectBack}>Voltar</a>
                     </div>
                     {/* Seção formulário */}
                     <div className="curseRow">
@@ -245,7 +245,7 @@ export function CadastrarCurso() {
 
                                 title4="imagem"
                                 // type4="file"
-                                type4="text"
+                                type4="file"
                                 placeholder4="Imagem"
                                 state4={imagem}
                                 method4={(e) => setImagem(e.target.value)}

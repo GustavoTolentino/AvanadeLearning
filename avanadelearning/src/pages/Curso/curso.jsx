@@ -12,6 +12,9 @@ import { Header } from "../../components/Navigation/Header";
 //https://www.kadunew.com/blog/css/diferenca-entre-as-propriedades-margin-e-padding-do-css
 //https://medium.com/reactbrasil/criando-lista-din%C3%A2mica-utilizando-reactjs-38f5faf65431
 
+// ICONES GRATUITOS
+// https://www.flaticon.com/search?word=c&order_by=4&type=icon
+
 export function Curso() {
   const history = useHistory();
   const [listaCursos, setListaCursos] = useState([]);

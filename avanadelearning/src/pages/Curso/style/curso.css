@@ -9,6 +9,11 @@
 
 }
 
+
+* {
+    margin: 0;
+}
+
 .flex-center-bt{
     display: flex;
     align-items: center;
@@ -55,7 +60,7 @@
 
 /* Area dos cursos */
 .areaKey{
-    height: 400px;
+    height: 57.9vh;
     background-color: #202024;
     /* background-color: aqua; */
 }
