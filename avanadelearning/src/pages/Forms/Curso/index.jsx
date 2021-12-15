@@ -304,9 +304,10 @@ export function CadastrarCurso() {
                                                     setDescricao(curso.descricao);
                                                     setImagem(curso.imagem);
                                                     setHoras(curso.horas);
+                                                    
                                                 }}
                                                 className="icon edit-icon"
-                                                onClick={() => updateCurse(curso.id)}
+                                                onClick={() => updateCurse(curso.idCurso)}
 
                                             />
 
